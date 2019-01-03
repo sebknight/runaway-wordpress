@@ -1,0 +1,17 @@
+html, body {
+    background: black;
+    width: 100%;
+    height: 100%;
+}
+
+.runaway-home {
+    background: seashell;
+}
+
+.runaway {
+    background: seagreen;
+}
+
+.title {
+    color: white;
+}
