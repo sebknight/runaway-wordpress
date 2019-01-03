@@ -3,7 +3,6 @@
     Template Name: Page No Title
 */
 get_header(); ?>
-    <div class="container">
     <?php 
     if (have_posts()) :
         while (have_posts()) : the_post(); ?>
@@ -13,5 +12,7 @@ get_header(); ?>
             endif;
 
             ?>
-    </div>
+</div>
+<!-- Column ENDS -->
+<?php get_sidebar(); ?>   
 <?php get_footer(); ?>

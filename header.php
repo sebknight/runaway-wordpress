@@ -21,3 +21,9 @@
 
     <?php wp_nav_menu(array('theme_location' => 'primary')) ?>
     <img src="<?php header_image(); ?>" alt="">
+
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column">  
+

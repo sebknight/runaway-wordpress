@@ -1,17 +1,33 @@
 html, body {
-    background: black;
+    background: rgb(100, 122, 139);
+    color: pink;
     width: 100%;
     height: 100%;
 }
 
 .runaway-home {
-    background: seashell;
+    background: darkslateblue;
 }
 
 .runaway {
     background: seagreen;
 }
 
-.title {
-    color: white;
+.title, .subtitle {
+    color: rgb(187, 25, 152);
+    text-shadow: 
+        -1px -1px 0 pink,  
+        1px -1px 0 pink,
+        -1px 1px 0 pink,
+        1px 1px 0 pink;
+}
+
+a, link {
+    color: aqua;
+    font-weight: 700;
+    font-family: serif;
+}
+
+a:hover, link:hover {
+    color: rgb(255, 239, 21);
 }

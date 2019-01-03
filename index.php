@@ -1,5 +1,9 @@
-<?php get_header(); ?>
-    <div class="container">
+<?php get_header(); 
+    // you can do this but it's convoluted
+    // if ( is_front_page() ){
+    //     //custom queries
+    // } else {
+?>
     <!-- Standard post loop -->
     <?php 
         if( have_posts() ):
@@ -13,5 +17,7 @@
         endif;
 
     ?>
-    </div>
+</div>
+<!-- Column ENDS -->
+<?php get_sidebar(); ?>   
 <?php get_footer(); ?>
