@@ -97,7 +97,7 @@ function runaway_custom_post_type(){
         'rewrite' => true, //can customise slug
         'capability_type' => 'post', //grabs default settings of other post type
         'hierarchical' => false,
-        'support' => array(
+        'supports' => array(
             'title',
             'editor',
             'excerpt',
@@ -111,7 +111,48 @@ function runaway_custom_post_type(){
         ),
         'menu-position' => 5,
         'exclude_from_search' => false
-    )
-
-
+    );
+    register_post_type('portfolio', $args);
 }
+
+add_action('init', 'runaway_custom_post_type');
+
+// add_filter('pre_get_posts', 'my_get_posts');
+// function my_get_posts($query)
+// {
+//     if (is_home() && $query->is_main_query()) $query->set('post_type', array('post', 'portfolio'));
+//     return $query;
+// }
+
+
+function runaway_custom_taxonomies() {
+
+    //Add new taxonomy hierarchical
+    //These are for admin panel, do not have to customise but will improve UX if you do
+    $labels = array(
+        'name' => 'Types', //generic name is always plural
+        'singular_name' => 'Type',
+        'search_items' => 'Search Types',
+        'all_items' => 'All Types',
+        'parent_item' => 'Parent Type',
+        'parent_item_colon' => 'Parent Type: ',
+        'edit_item' => 'Edit Type',
+        'update_item' => 'Update Type',
+        'add_new_item' => 'Add New Type',
+        'new_item_name' => 'New Type Name',
+        'menu_name' => 'Type'
+    );    
+
+    $args = array(
+        'hierarchical' => true,
+        'labels' => $labels,
+        'show_ui' => true,
+        'show_admin_column' => true,
+        'query_var' => true,
+        'rewrite' => array('slug' => 'type') //custom slug, lowercase singular name
+    );
+
+    register_taxonomy('type', array('portfolio'), $args);
+}
+
+add_action('init', 'runaway_custom_taxonomies');
