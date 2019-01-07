@@ -6,8 +6,7 @@
         while (have_posts()) : the_post(); ?>
                     <p><?php the_content(); ?></p>
 
-                    <h2 class="title"><?php the_title(); ?></h2>
-                    <h3 class="subtitle">This page is using page-7.php (this is hard-coded text)</h3>
+    <?php the_title(sprintf('<h2 class="title"><a href="%s">', esc_url(get_permalink())), '</a></h2>'); ?>                    <h3 class="subtitle">This page is using page-7.php (this is hard-coded text)</h3>
             <?php endwhile;
             endif;
 

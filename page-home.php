@@ -2,21 +2,43 @@
     <!-- Standard post loop -->
 
         <?php 
+
+        $args_cat = array(
+            //category IDs
+            'include' => '9, 10, 11'
+        );
+        
+        $categories = get_categories($args_cat);
+        foreach($categories as $category):
             //accesses WP Query loop and creates new instance - we are not touching the original one, just editing our own - it can access everything
-            $lastPost = new WP_Query('type=post&posts_per_page=1');
+            //filtering posts
+            $args = array(
+                'type' => 'post',
+                'posts_per_page' => 1,
+                //calling one post for each category
+                'category__in' => $category->term_id,
+                'category__not_in' => array(12)
+            );
 
-            if ( $lastPost->have_posts() ) :
-                while ( $lastPost->have_posts()) : $lastPost->the_post(); ?>
+            $lastPost = new WP_Query($args);
 
-                    <!-- use to determine content based on post format, does not have to be 'content' but that is probably a WP preset -->
-                    <?php get_template_part('content', get_post_format()); ?>
+            if ($lastPost->have_posts()) :
+                while ($lastPost->have_posts()) : $lastPost->the_post(); ?>
+
+                        <!-- use to determine content based on post format, does not have to be 'content' but that is probably a WP preset -->
+                        <?php get_template_part('content', 'featured'); ?>
 
 
                 <?php endwhile;
-                endif;
+            endif;
 
-                //Always use when creating new WP_Query - safeguards/resets, preventing from affecting other query posts
+                    //Always use when creating new WP_Query - safeguards/resets, preventing from affecting other query posts
                 wp_reset_postdata();
+
+        endforeach;
+
+
+
         ?>
 
     <?php 
@@ -34,7 +56,7 @@
             // $lastPost = new WP_Query('type=post&posts_per_page=2&offset=1');
 
             //Instead of using the above string, you can create an array of arguments to print in WP_Query, useful for long/complex queries, easy to read and understand
-            $args = array(
+   /*         $args = array(
                 'type' => 'post',
                 'posts_per_page' => 2,
                 'offset' => 1
@@ -53,7 +75,7 @@
                 endif;
 
                 //Always use when creating new WP_Query - safeguards/resets, preventing from affecting other query posts
-                wp_reset_postdata();
+                wp_reset_postdata(); */
 
             ?>
 

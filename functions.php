@@ -56,3 +56,62 @@ function runaway_sidebar_setup() {
     );
 }
 add_action('widgets_init', 'runaway_sidebar_setup');
+
+/* Include walker file */
+require get_template_directory() . '/inc/walker.php';
+
+/* Head function */
+
+function runaway_remove_version() {
+    return '';
+}
+
+add_filter('the_generator', 'runaway_remove_version');
+
+
+/* Custom post types */
+
+function runaway_custom_post_type(){
+    //Administration panel stuff
+    $labels = array(
+        'name' => 'Portfolio',
+        'singular_name' => 'Portfolio item',
+        'add_new' => 'Add a portfolio item',
+        'all_items' => 'All items',
+        'add_new_item' => 'Add a portfolio item',
+        'edit_item' => 'Edit item',
+        'new_item' => 'New item',
+        'view_item' => 'View item',
+        'search_item' => 'Search portfolio',
+        'not_found' => 'No items found',
+        'not_found_in_trash' => 'No items found in trash',
+        'parent_item_colon' => 'Parent item'
+    );
+
+    $args = array(
+        'labels' => $labels,
+        'public' => true,
+        'has_archive' => true, //media posts won't need an archive
+        'publicly_queryable' => true,
+        'query_var' => true,
+        'rewrite' => true, //can customise slug
+        'capability_type' => 'post', //grabs default settings of other post type
+        'hierarchical' => false,
+        'support' => array(
+            'title',
+            'editor',
+            'excerpt',
+            'thumbnail',
+            'revisions' //automatically save revisions in DB
+            //there are many other options
+        ), //support array ends
+        'taxonomies' => array(
+            'category',
+            'post_tag'
+        ),
+        'menu-position' => 5,
+        'exclude_from_search' => false
+    )
+
+
+}
