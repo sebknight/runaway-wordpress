@@ -10,10 +10,23 @@
         <div>
             <?php the_post_thumbnail('thumbnail'); ?>
         </div>
+        <div>
+            <?php the_title('<h2 class="title">','</h2>'); ?>
+        </div>
         <?php endif; ?>
-    <?php the_title();
-        the_category();
- 
+
+        <small>
+        <?php  echo runaway_get_terms($post->ID, 'field');?>
+        
+         || <?php echo runaway_get_terms($post->ID, 'client'); ?> <?php 
+
+        if (current_user_can('manage_options')) :
+            echo '|| '; edit_post_link(); 
+         
+        endif;
+         ?></small>
+
+            <?php 
          endwhile;
             endif;
 

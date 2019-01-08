@@ -14,6 +14,9 @@ get_header(); ?>
         while ($loop->have_posts()) : $loop->the_post(); ?>
 
         <?php get_template_part('content', 'archive'); ?>
+        <small><?php the_category(' ') ?> || <?php the_tags(); ?> || <?php edit_post_link(); ?></small>
+
+        <?php the_content(); ?>
 
 <?php endwhile;
     endif;

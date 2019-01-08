@@ -127,20 +127,20 @@ add_action('init', 'runaway_custom_post_type');
 
 function runaway_custom_taxonomies() {
 
-    //Add new taxonomy hierarchical
-    //These are for admin panel, do not have to customise but will improve UX if you do
+    //Hierarchical taxonomy
+    //Labels are for admin panel, do not have to customise but will improve UX if you do
     $labels = array(
-        'name' => 'Types', //generic name is always plural
-        'singular_name' => 'Type',
-        'search_items' => 'Search Types',
-        'all_items' => 'All Types',
-        'parent_item' => 'Parent Type',
-        'parent_item_colon' => 'Parent Type: ',
-        'edit_item' => 'Edit Type',
-        'update_item' => 'Update Type',
-        'add_new_item' => 'Add New Type',
-        'new_item_name' => 'New Type Name',
-        'menu_name' => 'Type'
+        'name' => 'Fields', //generic name is always plural
+        'singular_name' => 'Field',
+        'search_items' => 'Search Fields',
+        'all_items' => 'All Fields',
+        'parent_item' => 'Parent Field',
+        'parent_item_colon' => 'Parent Field: ',
+        'edit_item' => 'Edit Field',
+        'update_item' => 'Update Field',
+        'add_new_item' => 'Add New Field',
+        'new_item_name' => 'New Field Name',
+        'menu_name' => 'Field'
     );    
 
     $args = array(
@@ -149,10 +149,34 @@ function runaway_custom_taxonomies() {
         'show_ui' => true,
         'show_admin_column' => true,
         'query_var' => true,
-        'rewrite' => array('slug' => 'type') //custom slug, lowercase singular name
+        'rewrite' => array('slug' => 'field') //custom slug, lowercase singular name
     );
 
-    register_taxonomy('type', array('portfolio'), $args);
+    register_taxonomy('field', array('portfolio'), $args);
+
+    //non-hierarchical taxonomy
+
+    register_taxonomy('client', 'portfolio', array(
+            'label' => 'Clients',
+            'rewrite' => array( 'slug' => 'clients' ),
+            'hierarchical' => false
+        )
+    );
 }
 
 add_action('init', 'runaway_custom_taxonomies');
+
+// Custom term function
+function runaway_get_terms( $postID, $term ){
+    $terms_list = wp_get_post_terms($postID, $term);
+    $output = '';
+    $i = 0;
+    foreach ($terms_list as $term) {
+        $i++;
+        if ($i > 1) {
+            $output .=', ';
+        }
+        $output .= '<a href="' . get_term_link( $term ) . '">'. $term->name .  '</a>';
+    }
+    return $output;
+}
