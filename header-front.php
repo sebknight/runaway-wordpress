@@ -34,9 +34,8 @@
 
   <div id="navbarBasicExample" class="navbar-menu">
     <div class="navbar-start">
-
-
     </div>
+    <div class="navbar-end"></div>
         <?php
         wp_nav_menu(array(
             'theme_location' => 'primary',
@@ -52,12 +51,3 @@
 
     </nav>
 
-
-<body <?php body_class($runaway_classes); ?>>
-    
-    <!-- <?php wp_nav_menu(array('theme_location' => 'primary')) ?> -->
-    <img src="<?php header_image(); ?>" alt="">
-
-    <section class="section">
-        <div class="container">
-            <div class="columns">

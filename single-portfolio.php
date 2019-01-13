@@ -16,7 +16,7 @@
         <?php endif; ?>
 
         <small>
-        <?php  echo runaway_get_terms($post->ID, 'field');?>
+        <?php  echo runaway_get_terms($post->ID, 'work');?>
         
          || <?php echo runaway_get_terms($post->ID, 'client'); ?> <?php 
 

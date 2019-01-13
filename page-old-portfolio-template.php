@@ -1,8 +1,11 @@
 <?php 
 /*
-    Template Name: Portfolio 
+    Template Name: Not the portfolio 
+    Template Post Type: page
  */
 get_header(); ?>
+<?php wp_nav_menu(array('theme_location' => 'portfolio')) ?>
+
     <?php 
 
     $args = array(
@@ -22,7 +25,7 @@ get_header(); ?>
     endif;
 
             ?>
+
 </div>
 <!-- Column ENDS -->
-<?php get_sidebar(); ?>   
 <?php get_footer(); ?>

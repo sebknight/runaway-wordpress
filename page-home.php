@@ -1,6 +1,6 @@
 <?php get_header(); ?>
     <!-- Standard post loop -->
-
+    <h3>Test</h3>
         <?php 
 
         $args_cat = array(

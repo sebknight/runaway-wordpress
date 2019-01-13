@@ -1,33 +1,113 @@
+@font-face {
+    font-family: 'Varela', sans-serif;  
+    src: url(../fonts/Varela-Regular.ttf);  
+    font-weight: normal;  
+}
+
+* {
+    font-family: 'Varela', sans-serif;
+}
 html, body {
-    background: rgb(100, 122, 139);
-    color: pink;
     width: 100%;
     height: 100%;
+    padding: 0;
+    margin: 0;
+    position: 0;
+    box-sizing: border-box;
 }
 
-.runaway-home {
-    background: darkslateblue;
-}
+/* .runaway-home > .video-background{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+} */
 
+h1, h2, h3, a {
+    letter-spacing: 3px;
+    text-transform: uppercase;
+}
 .runaway {
     background: seagreen;
 }
 
 .title, .subtitle {
-    color: rgb(187, 25, 152);
+    /* color: rgb(187, 25, 152);
     text-shadow: 
         -1px -1px 0 pink,  
         1px -1px 0 pink,
         -1px 1px 0 pink,
-        1px 1px 0 pink;
+        1px 1px 0 pink; */
 }
 
-a, link {
-    color: aqua;
-    font-weight: 700;
-    font-family: serif;
+.button {
+    letter-spacing: 3px;
+    border: solid black 1px;
 }
 
-a:hover, link:hover {
-    color: rgb(255, 239, 21);
+.button:hover, link:hover {
+    color: white;
+    background: black;
+}
+
+.navbar {
+    width: 100vw;
+    background: transparent;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+}
+
+.navbar-item {
+    align-self: right;
+}
+
+.video-background {
+    z-index: 0;
+    min-width: 100vw;
+    height: 100%;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    padding: 0;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    pointer-events: none;
+}
+
+.card-featured {
+    z-index: 1;
+}
+/* #hero {
+position: relative;
+} */
+/* iframe {
+padding: 0;
+margin: 0 auto;
+width: 100vw;
+height: 100vh;
+} */
+
+.player, .vp-video-wrapper, .vp-video {
+    width: calc(100vw);
+    height: 100vh;
+    top: 0;
+    margin: 0;
+    padding: 0;
+    position: static;
+}
+
+.sidebar {
+    background: white;
+    border-right: solid black 1px;
 }
