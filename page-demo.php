@@ -1,11 +1,12 @@
-<?php get_header(); ?>
-    <!-- Standard post loop -->
-    <h3>Test</h3>
+<?php get_header(); 
+/*
+    Template Name: Demo Page
+*/ ?>
         <?php 
 
         $args_cat = array(
             //category IDs
-            'include' => '9, 10, 11'
+            'include' => '32, 33'
         );
         
         $categories = get_categories($args_cat);
@@ -17,7 +18,6 @@
                 'posts_per_page' => 1,
                 //calling one post for each category
                 'category__in' => $category->term_id,
-                'category__not_in' => array(12)
             );
 
             $lastPost = new WP_Query($args);
@@ -26,7 +26,7 @@
                 while ($lastPost->have_posts()) : $lastPost->the_post(); ?>
 
                         <!-- use to determine content based on post format, does not have to be 'content' but that is probably a WP preset -->
-                        <?php get_template_part('content', 'featured'); ?>
+                        <?php get_template_part('content', 'portfolio'); ?>
 
 
                 <?php endwhile;

@@ -59,5 +59,4 @@
     <img src="<?php header_image(); ?>" alt="">
 
     <section class="section">
-        <div class="container">
-            <div class="columns">
+        <div class="columns">

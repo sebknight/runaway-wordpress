@@ -18,13 +18,7 @@
         <small>
         <?php  echo runaway_get_terms($post->ID, 'work');?>
         
-         || <?php echo runaway_get_terms($post->ID, 'client'); ?> <?php 
-
-        if (current_user_can('manage_options')) :
-            echo '|| '; edit_post_link(); 
-         
-        endif;
-         ?></small>
+         || <?php echo runaway_get_terms($post->ID, 'client'); ?></small>
 
             <?php 
          endwhile;

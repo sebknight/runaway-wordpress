@@ -1,7 +1,5 @@
-                </div>
-                <!-- columns END -->
             </div>
-            <!-- Container ENDS -->
+            <!-- columns END -->
         </section> 
         <!-- Section ENDS -->
         <footer>

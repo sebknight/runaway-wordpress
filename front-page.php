@@ -15,7 +15,7 @@ get_header('front'); ?>
   </div>
   <div class="card-content">
     <div class="content">
-     <a href="/wordpress/portfolio" class="button">OUR WORK</a>
+     <a href="/wordpress/our-work" class="button">OUR WORK</a>
      <a href="/wordpress/clients" class="button">OUR CLIENTS</a>
     </div>
   </div>

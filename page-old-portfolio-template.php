@@ -1,6 +1,6 @@
 <?php 
 /*
-    Template Name: Not the portfolio 
+    Template Name: Old Portfolio
     Template Post Type: page
  */
 get_header(); ?>

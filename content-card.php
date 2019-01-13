@@ -1,6 +1,7 @@
 <?php 
     /*
     Template Name: Card
+    Template Type: post
     */
 ?>
 

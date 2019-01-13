@@ -38,15 +38,10 @@ h1, h2, h3, a {
     background: seagreen;
 }
 
-.title, .subtitle {
-    /* color: rgb(187, 25, 152);
-    text-shadow: 
-        -1px -1px 0 pink,  
-        1px -1px 0 pink,
-        -1px 1px 0 pink,
-        1px 1px 0 pink; */
-}
-
+/* .section {
+    padding: 0;
+    margin: 0 auto;
+} */
 .button {
     letter-spacing: 3px;
     border: solid black 1px;
@@ -108,6 +103,29 @@ height: 100vh;
 }
 
 .sidebar {
+    margin-left: 0;
     background: white;
     border-right: solid black 1px;
 }
+
+/* .textwidget {
+    display: hidden
+}
+
+.textwidget:hover {
+    display: block;
+} */
+
+/* .widget-dropdown {
+    display: hidden;
+}
+
+.widget-dropdown:hover{
+    display: block;
+    background: black;
+    color: white;
+}
+
+.widget-dropdown-title {
+    display: block;
+} */

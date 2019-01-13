@@ -45,39 +45,15 @@ function runaway_sidebar_setup() {
     register_sidebar(
         array(
             'name' => 'Portfolio sidebar',
-            'id' => 'sidebar-1',
-            'class' => 'custom',
+            'id' => 'portfolio-sidebar',
+            'class' => '',
             'description' => 'Sidebar for information about your portfolio',
-            'before_widget' => '<div id="%1$s" class="widget %2$s sidebar column is-one-quarter">',
+            'before_widget' => '<div id="%1$s" class="widget %2$s">',
             'after_widget' => "</div>\n",
-            'before_title' => '<h2 class="widget-title">',
+            'before_title' => '<h2 class="widget-title widget-dropdown-title">',
             'after_title' => "</h2>\n",
         )
     );
-    // register_sidebar(
-    //     array(
-    //         'name' => 'Sidebar 2',
-    //         'id' => 'sidebar-2',
-    //         'class' => 'custom',
-    //         'description' => 'Secondary sidebar',
-    //         'before_widget' => '<li id="%1$s" class="widget %2$s">',
-    //         'after_widget' => "</li>\n",
-    //         'before_title' => '<h2 class="widget-title">',
-    //         'after_title' => "</h2>\n",
-    //     )
-    // );
-    // register_sidebar(
-    //     array(
-    //         'name' => 'Portfolio Sidebar',
-    //         'id' => 'portfolio-sidebar',
-    //         'class' => 'portfolio',
-    //         'description' => 'Sidebar to display information about your portfolio',
-    //         'before_widget' => '<li id="%1$s" class="widget %2$s">',
-    //         'after_widget' => "</li>\n",
-    //         'before_title' => '<h2 class="widget-title">',
-    //         'after_title' => "</h2>\n",
-    //     )
-    // );
 }
 add_action('widgets_init', 'runaway_sidebar_setup');
 
@@ -206,7 +182,9 @@ function runaway_custom_taxonomies() {
     // register_taxonomy('field', array('portfolio'), $args);
 
     # non-hierarchical taxonomy
-    register_taxonomy('client', 'portfolio', array(
+    register_taxonomy('client', 'client', array(
+            'name' => 'Clients',
+            'singular_name' => 'Client',
             'label' => 'Clients',
             'rewrite' => array( 'slug' => 'clients' ),
             'hierarchical' => false
@@ -214,8 +192,10 @@ function runaway_custom_taxonomies() {
     );
 
     register_taxonomy('work', 'portfolio', array(
+        'name' => 'Work types',
+        'singular_name' => 'Work type',
         'label' => 'Work type',
-        'rewrite' => array('slug' => 'our-work'),
+        'rewrite' => array('slug' => 'work'),
         'hierarchical' => false
     ));
 
@@ -246,4 +226,74 @@ register_nav_menus(array(
 
 require_once get_template_directory() . '/inc/wordpress-theme-customizer-custom-controls/theme-customizer-demo.php';
 
-// Register and load the widget
+
+
+
+
+
+function runaway_load_widget()
+{
+    register_widget('portfolio_sidebar_info');
+}
+add_action('widgets_init', 'runaway_load_widget');
+ 
+// Creating the widget 
+class portfolio_sidebar_info extends WP_Widget
+{
+
+    function __construct()
+    {
+        parent::__construct(
+ 
+// Base ID of your widget
+            'portfolio_info_widget', 
+ 
+// Widget name will appear in UI
+            __('Portfolio sidebar info widget', 'runaway_widget_domain'), 
+ 
+// Widget description
+            array('description' => __('A widget allowing you to display information in the portfolio sidebar', 'runaway_widget_domain'), )
+        );
+    }
+ 
+// Creating widget front-end
+
+    public function widget($args, $instance)
+    {
+        $title = apply_filters('widget_title', $instance['title']);
+ 
+// before and after widget arguments are defined by themes
+        echo $args['before_widget'];
+        if (!empty($title))
+            echo $args['before_title'] . $title . $args['after_title'];
+ 
+// This is where you run the code and display the output
+        echo __('Hello, World!', 'runaway_widget_domain');
+        echo $args['after_widget'];
+    }
+         
+// Widget Backend 
+    public function form($instance)
+    {
+        if (isset($instance['title'])) {
+            $title = $instance['title'];
+        } else {
+            $title = __('New title', 'runaway_widget_domain');
+        }
+// Widget admin form
+        ?>
+<p>
+<label for="<?php echo $this->get_field_id('title'); ?>"><?php _e('Title:'); ?></label> 
+<input class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" type="text" value="<?php echo esc_attr($title); ?>" />
+</p>
+<?php 
+}
+     
+// Updating widget replacing old instances with new
+public function update($new_instance, $old_instance)
+{
+    $instance = array();
+    $instance['title'] = (!empty($new_instance['title'])) ? strip_tags($new_instance['title']) : '';
+    return $instance;
+}
+} // Class wpb_widget ends here
