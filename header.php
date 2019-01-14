@@ -33,29 +33,22 @@
   </div>
 
   <div id="navbarBasicExample" class="navbar-menu">
-    <div class="navbar-start">
-
-
-    </div>
         <?php
-        wp_nav_menu(array(
-            'theme_location' => 'primary',
-            'depth' => 2,
-            'container' => false,
-            // 'items_wrap'     => 'div',
-            'menu_class' => 'navbar-menu',
-            'menu_id' => 'primary-menu',
-            'after' => "</div>",
-            'walker' => new Bulmascores_Nav_Walker()
-        ));
-        ?>
+        wp_nav_menu(
+            array(
+                'theme_location' => 'primary',
+                'menu' => 'Menu 1',
+                'walker' => new Bulmascores_Nav_Walker(),
+                'container' => false,
+                'items_wrap' => '<div class="navbar-start">%3$s</div>',
+            )
+        );        ?>
 
     </nav>
 
 
 <body <?php body_class($runaway_classes); ?>>
     
-    <!-- <?php wp_nav_menu(array('theme_location' => 'primary')) ?> -->
     <img src="<?php header_image(); ?>" alt="">
 
     <section class="section">

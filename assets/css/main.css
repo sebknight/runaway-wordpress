@@ -92,7 +92,7 @@ margin: 0 auto;
 width: 100vw;
 height: 100vh;
 } */
-
+/* 
 .player, .vp-video-wrapper, .vp-video {
     width: calc(100vw);
     height: 100vh;
@@ -100,7 +100,7 @@ height: 100vh;
     margin: 0;
     padding: 0;
     position: static;
-}
+} */
 
 .sidebar {
     margin-left: 0;
@@ -129,3 +129,4 @@ height: 100vh;
 .widget-dropdown-title {
     display: block;
 } */
+
