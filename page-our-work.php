@@ -1,67 +1,42 @@
 <?php 
-    /* Template Name: Portfolio
-    Template Post Type : page */
+    /* Template Name: Portfolio Page */
     
     get_header(); ?>
-
-    <div class="column is-one-quarter sidebar">
-        <?php dynamic_sidebar('portfolio-sidebar'); ?> 
-    </div>
-
-
-    <?php
-    $args = array(
-        'post_type' => 'portfolio',
-        'taxonomy' => 'work',
-        'terms' => 'film_and_video',
-        'posts_per_page' => 3);
-    $loop = new WP_Query($args);
- ?>
     
-    <div class="column">
-        <div class="container">
-                <h2><?php the_title(); ?></h2>
-                <h3><?php $post_tags = get_the_terms($args);
-                    if ($post_tags) {
-                        echo $post_tags[0]->name;
-                    } ?></h3>
-            <div class="level">
-
-            <?php 
-                if ($loop->have_posts()) :
-                    while ($loop->have_posts()) : $loop->the_post();
-
-                // get_template_part('content', 'archive');
-
-                the_content();
-
-                endwhile;
-                endif; ?>
-
-                <?php wp_reset_postdata(); ?>
-            </div>
-                <?php $args = array(
-                    'post_type' => 'portfolio',
-                    'terms' => 'animation_and_vfx',
-                    'posts_per_page' => 3
-                );
-                $loop = new WP_Query($args); ?>
-
-            <div class="level">
-            <?php 
-            if ($loop->have_posts()) :
-                while ($loop->have_posts()) : $loop->the_post();
-
-                // get_template_part('content', 'archive');
-
-            the_content();
-
-            endwhile;
-            endif; ?>
-
-                <?php wp_reset_postdata(); ?>
-            </div>
+    <?php if (is_active_sidebar( 'portfolio-sidebar' )) : ?>
+        <div class="column is-one-fifth sidebar">
+            <?php dynamic_sidebar('portfolio-sidebar'); ?> 
         </div>
-    </div>
+    <?php endif; ?>
 
+    <?php if(have_posts()): 
+        while(have_posts()): the_post(); ?>
+            <div class="column">
+                    <div class="level">
+                        <div class="level-item">
+                            <h1><?php the_title(); ?></h1>              
+                        </div>
+                    </div>
+                    <div class="level">
+                        <?php 
+                            $args = array(
+                                'post_type' => 'portfolio',
+                                'order' => 'ASC',
+                                'orderby' => 'title',
+                                'posts_per_page' => -1
+                            );
+                            $allPortfolioPosts = new WP_Query($args)
+                        ?>
+                        <?php if( $allPortfolioPosts->have_posts() ):
+                            while( $allPortfolioPosts->have_posts() ): $allPortfolioPosts->the_post(); ?>
+                        <div class="level-item">
+                            <?php the_content(); ?>
+                        </div>
+                        <?php endwhile; ?>
+                    <?php endif; ?>
+                    </div>
+            </div> 
+
+        <?php endwhile; ?>
+    <?php endif; ?>
 <?php get_footer(); ?>
