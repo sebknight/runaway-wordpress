@@ -57,11 +57,17 @@ h1, h2, h3, a {
     background: transparent;
     letter-spacing: 3px;
     text-transform: uppercase;
+    /* display: flex;
+    justify-content: space-evenly; */
 }
 
-.navbar-item {
-    align-self: right;
-}
+/* .navbar-item {
+    display: flex;
+    justify-content: space-evenly;
+} */
+
+/* .navbar-item {
+} */
 
 .video-background {
     z-index: 0;

@@ -32,7 +32,8 @@
     </a>
   </div>
 
-  <div id="navbarBasicExample" class="navbar-menu">
+  <div id="navbar" class="navbar-menu">
+    <div class="navbar-start"></div>
         <?php
         wp_nav_menu(
             array(
@@ -40,10 +41,9 @@
                 'menu' => 'Menu 1',
                 'walker' => new Bulmascores_Nav_Walker(),
                 'container' => false,
-                'items_wrap' => '<div class="navbar-start">%3$s</div>',
+                'items_wrap' => '<div class="navbar-end">%3$s</div>',
             )
         );        ?>
-
     </nav>
 
 

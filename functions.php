@@ -27,15 +27,37 @@ add_action('init', 'runaway_theme_setup');
 # Allow custom background
 add_theme_support('custom-background');
 
-# Allow custom header
-add_theme_support('custom-header');
-
 # Allow post thumbbails (featured images)
 add_theme_support('post-thumbnails');
 
 # Enable post types
 add_theme_support('post-formats', array('aside', 'image', 'video'));
 
+# Allow custom logo
+add_theme_support('custom-logo', array(
+    'height' => 100,
+    'width' => 300,
+    'flex-width' => true,
+    'flex-height' => true
+));
+
+# Allow custom header image
+register_default_headers(array(
+    'defaultImage' => array(
+        'url' => get_template_directory_uri() . '/assets/images/default.jpg',
+        'thumbnail_url' => get_template_directory_uri() . '/assets/images/default.jpg',
+        'description' => __('defaultImage', 'runawaytheme')
+    )
+    ) );
+
+$defaultImage = array(
+    'default-image' => get_template_directory_uri() . '/assets/images/default.jpg',
+    'width' => 1920,
+    'height' => 1080,
+    'header-text' => false
+);
+
+add_theme_support('custom-header', $defaultImage);
 
 # Setting up sidebar
 
@@ -71,3 +93,10 @@ add_filter('the_generator', 'runaway_remove_version');
 require_once get_template_directory() . '/inc/navwalker.php';
 
 require get_parent_theme_file_path('/inc/custom-post-types.php');
+
+require get_parent_theme_file_path('./inc/custom-customizer.php');
+
+// function show_more_posts(){
+
+    
+// }
