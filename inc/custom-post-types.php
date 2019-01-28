@@ -25,6 +25,32 @@ function runaway_portfolio_post_type(){
 
 add_action('init', 'runaway_portfolio_post_type');
 
+function runaway_client_post_type(){
+    $labels = array(
+        'name' => _x('Clients', 'post type name', 'runaway'),
+        'singular_name' => _x('Clients', 'post types singular name', 'runaway'),
+        'add_new_item' => _x('Add New Client', 'adding new client', 'runaway')
+    );
+
+    $args = array(
+        'labels' => $labels,
+        'description' => 'post type for clients',
+        'public' => true,
+        'hierarchical' => false,
+        'exclude_from_search' => false,
+        'show_ui' => true,
+        'show_in_menu' => true,
+        'show_in_nav_menus' => true,
+        'menu_position' => 20,
+        'menu_icon' => 'dashicons-admin-users',
+        'query_var' => true
+    );    register_post_type('clients', $args);
+
+}
+
+add_action('init', 'runaway_client_post_type');
+
+
 function runaway_services_post_type(){
     $labels = array(
         'name' => _x('Services', 'post type name', 'runaway'),

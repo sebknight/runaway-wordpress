@@ -1,1 +1,6 @@
-console.log('goodbye');
+$ = jQuery;
+
+$(document).ready(function() {
+    console.log('ready');
+
+})

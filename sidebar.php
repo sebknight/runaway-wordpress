@@ -5,7 +5,7 @@
             'theme_location' => 'sidebar',
             'depth' => 2,
             'container' => false,
-            // 'items_wrap'     => 'div',
+            // 'items_wrap'     => '<div class="service">%3$s</div>',
             'menu_class' => 'navbar-menu',
             'menu_id' => 'sidebar-menu',
             'after' => "</div>",

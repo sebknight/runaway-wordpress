@@ -57,9 +57,6 @@ h1, h2, h3, a {
 .navbar, #navbar {
     letter-spacing: 3px;
     text-transform: uppercase;
-    /* justify-content: space-between; */
-    /* display: flex;
-    justify-content: space-evenly; */
 }
 
 .hero-body {
@@ -72,13 +69,26 @@ h1, h2, h3, a {
 }
 
 .portfolio-container {
+    height: 100%;
     display: flex;
     flex-wrap: wrap;
+    flex-direction: row;
+    margin: 0 auto;
     /* flex-basis: 25%; */
 }
 
 .post {
-    min-width: 25%;
-    margin: 1em;
-    padding: 1em;
+    min-width: 33%;
+    /* flex-grow: 1; */
+    /* flex: 1 0 200px; */
+    /* margin: 1em;
+    padding: 1em; */
+}
+
+.menu-item-object-services {
+    background: red;
+}
+
+.dropped-down {
+    background: blue;
 }
