@@ -5,32 +5,44 @@
 
 get_header('front'); ?>
 
-<iframe class="video-background" id="projectplayer" src="https://player.vimeo.com/video/234082933?api=1&background=1&mute=1&autoplay=1&loop=1 frameborder="0" width="1920" height="1080" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+<section class="hero is-fullheight" style="background-image:url(<?php header_image();?>)">
+  <div class="hero-head"></div>
+  <div class="hero-body">
 
-<div class="card">
-  <div class="card-image">
-    <figure class="image is-4by3">
-      <img src="https://bulma.io/images/placeholders/1280x960.png" alt="Placeholder image">
-    </figure>
-  </div>
-  <div class="card-content">
-    <div class="content">
-     <a href="/wordpress/our-work" class="button">OUR WORK</a>
-     <a href="/wordpress/clients" class="button">OUR CLIENTS</a>
+    <?php 
+    if( get_theme_mod( 'hero_text_block' ) !="") : ?>
+      <div class="card hero-card">
+      <div class="card-content">
+        <?php 
+            echo get_theme_mod( 'hero_text_block' );
+          ?>
+      </div>
     </div>
+  <?php endif; ?>
+
   </div>
-</div>
 
-<section class="section about">
-
-
-
+  <div class="hero-foot"></div>
 </section>
 
+<!-- // Make this a featured post instead -->
+<!-- <section class="section about">
+  <div class="container">
+    <figure class="about-image image is-4by3">
+      <img src="https://bulma.io/images/placeholders/1280x960.png" alt="Placeholder image">
+    </figure>
 
-<!--             
-<div style="padding:56.25% 0 0 0;position:relative;"><iframe src="https://player.vimeo.com/video/234082933?autoplay=1&loop=1&title=0&byline=0&portrait=0" style="position:absolute;top:0;left:0;width:100%;height:100%;" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe></div><script src="https://player.vimeo.com/api/player.js"></script>
+    <?php if( get_theme_mod( 'about_text_block' ) !="") : ?>
+      <div class="content">
+        <?php echo get_theme_mod( 'about_text_block' ); ?>
+      </div>
+    <?php endif; ?>
+    
+    <div class="level about-buttons">
+
     </div>
+  </div>
 </section> -->
+
 
 <?php get_footer('front'); ?>

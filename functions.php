@@ -9,6 +9,8 @@ function runaway_custom_frontend() {
     wp_enqueue_style('main', get_template_directory_uri() . '/assets/css/main.css', array(), '0.0.1', 'all');
     # JS
     wp_enqueue_script('main', get_template_directory_uri() . '/assets/js/main.js', array(), '0.0.1', true);
+    wp_enqueue_script('responsive-video', get_template_directory_uri() . '/assets/js/responsive-video.js', array(), '0.0.1', true);
+
 }
 
 add_action('wp_enqueue_scripts','runaway_custom_frontend');
@@ -25,6 +27,19 @@ function runaway_theme_setup() {
 add_action('init', 'runaway_theme_setup');
 
 # Allow custom background
+// $customBackgroundrgs = array(
+// 	'default-color'          => '',
+// 	'default-image'          => get_template_directory_uri() . '/assets/images/default.jpg',,
+// 	'default-repeat'         => 'repeat',
+// 	'default-position-x'     => 'left',
+//     'default-position-y'     => 'top',
+//     'default-size'           => 'auto',
+// 	'default-attachment'     => 'scroll',
+// 	'wp-head-callback'       => '_custom_background_cb',
+// 	'admin-head-callback'    => '',
+// 	'admin-preview-callback' => ''
+// );
+
 add_theme_support('custom-background');
 
 # Allow post thumbbails (featured images)

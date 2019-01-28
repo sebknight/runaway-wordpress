@@ -22,8 +22,11 @@
 <nav class="navbar" role="navigation" aria-label="main navigation">
   <div class="navbar-brand">
     <a class="navbar-item" href="">
-      <img src="" width="112" height="28">
-    </a>
+      <?php 
+      $custom_logo_id = get_theme_mod( 'custom_logo' );
+      $custom_logo_url = wp_get_attachment_image_url( $custom_logo_id , 'full' );
+      echo '<img src="' . esc_url( $custom_logo_url ) . '" alt="">';
+      ?>    </a>
 
     <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
       <span aria-hidden="true"></span>
@@ -34,6 +37,7 @@
 
   <div id="navbar" class="navbar-menu">
     <div class="navbar-start"></div>
+    <div class="navbar-end">
         <?php
         wp_nav_menu(
             array(
@@ -41,15 +45,14 @@
                 'menu' => 'Menu 1',
                 'walker' => new Bulmascores_Nav_Walker(),
                 'container' => false,
-                'items_wrap' => '<div class="navbar-end">%3$s</div>',
+                'items_wrap' => '<div class="navbar-item">%3$s</div>',
             )
         );        ?>
+    </div>
     </nav>
 
 
 <body <?php body_class($runaway_classes); ?>>
-    
-    <img src="<?php header_image(); ?>" alt="">
 
     <section class="section">
         <div class="columns">
