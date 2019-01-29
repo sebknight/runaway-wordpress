@@ -1,5 +1,5 @@
-<div id="portfolio-sidebar" class="sidebar">
-    <nav class="navbar" role="navigation" aria-label="sidebar">
+<div id="hero-cta" class="cta">
+    <nav class="navbar" role="navigation">
         <?php
         wp_nav_menu(array(
             'theme_location' => 'sidebar',

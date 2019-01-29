@@ -17,7 +17,6 @@
                 $get_portfolio = new WP_Query(array(
                     'post_type'     => 'portfolio', 
                     'status'        => 'published', 
-                    'posts_per_page'=> 3,
                     'orderby'	=> 'post_date',
                     'order'         => 'DESC',
                     'paged'         => $paged
@@ -26,24 +25,16 @@
 
                 <?php if( $get_portfolio->have_posts() ) :
                     while( $get_portfolio->have_posts() ) : $get_portfolio->the_post(); ?>
-                    <div class="post">
+                    <div class="portfolio-post">
                     <?php the_content(); ?>
                     </div>
                 <?php endwhile; ?>
                 </div>
 
-                    <?php if( $get_portfolio->found_posts > 3) : ?>
-                        <div class="level">
-                            <div class="level-right">
-                                <a id="post-loader" class="button">More</a>
-                            </div>
-                        </div>               
-                    <?php endif; ?>
                 <?php endif; ?>
             
             </div> 
         <?php endwhile; ?>
     <?php endif; ?>
-
 
 <?php get_footer(); ?>

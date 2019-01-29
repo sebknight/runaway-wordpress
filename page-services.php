@@ -12,7 +12,7 @@
             </div>
 
             <!-- <div class="container container-services"> -->
-                <div class="columns columns-services">
+                <div class="columns">
                 <?php 
                     $args = array(
                         'post_type' => 'services',

@@ -9,15 +9,6 @@
     <?php wp_head(); ?>
 </head>
 
-<!-- <?php
-
-    if( is_front_page() ):
-            $runaway_classes = array( 'runaway-home' );
-    else:
-            $runaway_classes = array ( 'runaway' );
-    endif;
-?> -->
-
 <nav class="navbar" role="navigation" aria-label="main navigation">
     <div class="navbar-brand">
         <a class="navbar-item" href="/wordpress">

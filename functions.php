@@ -16,30 +16,15 @@ function runaway_custom_frontend() {
 
 add_action('wp_enqueue_scripts','runaway_custom_frontend');
 
-
 # Enabling theme support for features
 function runaway_theme_setup() {
     add_theme_support('menus');
     register_nav_menu('primary', 'Primary header navigation');
-    register_nav_menu('secondary', 'Footer navigation');
-    register_nav_menu('portfolio', 'Sidebar to show information about your portfolio');
+    register_nav_menu('hero', 'CTA buttons for the hero card');
+    // register_nav_menu('hero', 'CTA buttons for the hero card');
 }
 
 add_action('init', 'runaway_theme_setup');
-
-# Allow custom background
-// $customBackgroundrgs = array(
-// 	'default-color'          => '',
-// 	'default-image'          => get_template_directory_uri() . '/assets/images/default.jpg',,
-// 	'default-repeat'         => 'repeat',
-// 	'default-position-x'     => 'left',
-//     'default-position-y'     => 'top',
-//     'default-size'           => 'auto',
-// 	'default-attachment'     => 'scroll',
-// 	'wp-head-callback'       => '_custom_background_cb',
-// 	'admin-head-callback'    => '',
-// 	'admin-preview-callback' => ''
-// );
 
 add_theme_support('custom-background');
 
@@ -75,17 +60,15 @@ $defaultImage = array(
 
 add_theme_support('custom-header', $defaultImage);
 
-# Setting up sidebar
+# Setting up hero CTA nav
 
 function runaway_sidebar_setup() {
-    # Class refers to the backend - WP prepends to the frontend class
-    # Widget and title connected to ID and class, changes/wraps markup
     register_sidebar(
         array(
-            'name' => 'Portfolio sidebar',
-            'id' => 'portfolio-sidebar',
+            'name' => 'Hero CTA navigation',
+            'id' => 'hero-cta',
             'class' => '',
-            'description' => 'Sidebar for information about your portfolio',
+            'description' => 'CTA buttons for the hero card',
             'before_widget' => '<div id="%1$s" class="widget %2$s">',
             'after_widget' => "</div>\n",
             'before_title' => '<h2 class="widget-title widget-dropdown-title">',
@@ -107,8 +90,6 @@ add_filter('the_generator', 'runaway_remove_version');
 
 require_once get_template_directory() . '/inc/navwalker.php';
 
-require get_parent_theme_file_path('./inc/ajax-loader.php');
-
 require get_parent_theme_file_path('/inc/custom-post-types.php');
 
 require get_parent_theme_file_path('./inc/custom-customizer.php');
@@ -116,12 +97,3 @@ require get_parent_theme_file_path('./inc/custom-customizer.php');
 
 #  Remove rich editing in the contact form
 add_filter( 'user_can_richedit' , '__return_false', 50 );
-
-
-# AJAX
-$ajaxurl .= admin_url( 'admin-ajax.php');
-wp_localize_script( 'runaway-script', 'ajax_loader', array(
-    'ajaxurl' => $ajaxurl,
-	'noposts'  => esc_html__('No older posts found', 'runawaytheme'),
-	'loadmore' => esc_html__('Load more', 'runawaytheme')
-) );

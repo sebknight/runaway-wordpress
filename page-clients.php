@@ -12,7 +12,7 @@
                     </div>
                 </div>
 
-                <div class="client-container">
+                <div class="container">
                     <?php 
                         $args = array(
                             'post_type' => 'clients',
@@ -33,7 +33,7 @@
                             </div>
 
                             <?php if( has_post_thumbnail() ): ?>
-                                <div class="client-logo">
+                                <div class="level-right client-logo">
                                     <?php the_post_thumbnail('thumbnail'); ?>
                                 </div>
                             <?php endif; ?>
@@ -41,6 +41,7 @@
                         <hr>
                     <?php endwhile; ?>
                     <?php endif; ?>
+
                 </div>
             </div> 
         <?php endwhile; ?>

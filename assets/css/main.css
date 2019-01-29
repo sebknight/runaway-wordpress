@@ -93,8 +93,32 @@ hr {
   /* flex-basis: 25%; */
 }
 
+.portfolio-post {
+  min-width: 100%;
+  margin: 1em;
+}
+
+@media (min-width: 600px) {
+  .portfolio-post {
+    min-width: 80%;
+  }
+}
+
+@media (min-width: 900px) {
+  .portfolio-post {
+    min-width: 50%;
+    margin: 0 auto;
+  }
+}
+
+@media (min-width: 1200px) {
+  .portfolio-post {
+    min-width: 33%;
+  }
+}
+
 /* Services Page */
-.columns-services {
+.column-services {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -103,9 +127,6 @@ hr {
           align-items: flex-start;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
-}
-
-.column-services {
   margin: 1em;
   padding: 0;
   min-width: 30%;
@@ -119,14 +140,28 @@ hr {
 
 /* Clients Page */
 .client-post {
-  width: 100%;
+  max-width: 50%;
   padding: 0;
 }
 
 @media (min-width: 900px) {
   .client-post {
-    width: 75%;
+    max-width: 60%;
   }
+}
+
+@media (min-width: 1200px) {
+  .client-post {
+    max-width: 50%;
+  }
+}
+
+.client-level {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap-reverse;
+      flex-wrap: wrap-reverse;
 }
 
 /* 404 Page */

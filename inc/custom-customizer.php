@@ -1,16 +1,4 @@
 <?php 
-// FRONT PAGE:
-// Text on front page
-// Buttons on front page (bottom nav)
-// Front page image
-// Front page card (logo, buttons, title)
-// Front page colour controls
-
-// REST OF SITE:
-// Nav colors - might avoid w/ transparent nav
-// Text color
-// Background color
-
 function runaway_customizer( $wp_customize ){
     
     ##########################
@@ -262,6 +250,30 @@ function runaway_customizer( $wp_customize ){
         )
     );
 
+    # Hero CTA colour
+
+    $wp_customize->add_section( 'hero_cta_link_colour', array(
+        'title' => __('Change hero CTA link colour', 'runawaytheme'),
+        'panel' => 'home_page',
+        'priority' => 90
+    ) );
+
+    $wp_customize->add_setting('hero_cta_link_colour_setting', array(
+        'default' => '#ffffff',
+        'transport' => 'refresh'
+    ));
+
+    $wp_customize->add_control(
+        new WP_Customize_Color_Control(
+            $wp_customize,
+            'hero_cta_link_colour',
+            array(
+                'label' => __('Hero CTA Link Colour', 'runawaytheme'),
+                'section' => 'hero_cta_link_colour',
+                'settings' => 'hero_cta_link_colour_setting'
+            )
+        )
+    );
 
     # About text
 
@@ -372,8 +384,6 @@ add_action('customize_register', 'runaway_customizer');
 function runaway_customizer_styles(){
 ?>
     <style type="text/css">
-        /* .header-bg{
-            background-color: <?php echo get_theme_mod('header_background_colour_setting') ?> */
         .navbar, .navbar-item {
             background-color: <?php echo get_theme_mod('header_background_colour_setting', '#ffffff'); ?> !important;
             color: <?php echo get_theme_mod('header_link_colour_setting', '#000000'); ?> !important;
@@ -400,8 +410,6 @@ function runaway_customizer_styles(){
         .card-services {
             border: 1px solid <?php echo get_theme_mod('sitewide_font_colour_setting', '#000000'); ?> !important;
         }
-
-
     </style>
 <?php  
 }
