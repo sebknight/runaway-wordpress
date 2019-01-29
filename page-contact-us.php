@@ -3,31 +3,25 @@
     Template Name: Contact Us
  */
 if ($_POST) {
-    var_dump($_POST);
     $errors = array();
-    if (!wp_verify_nonce($_POST['_wpnonce'], 'wp_enquiery_form')) {
-        array_push($errors, 'Sorry something went wrong with processing this form, Please try again');
+    if (!wp_verify_nonce($_POST['_wpnonce'], 'wp_enquiry_form')) {
+        array_push($errors, 'Sorry, there has been an error. Please try again');
     } else {
         if (!$_POST['enquiriesName']) {
-            array_push($errors, "Your name is required, please enter a value");
-        } else if (strlen($title) < 2) {
-            array_push($errors, "Please enter at least 2 characters for your Name");
+            array_push($errors, "Please enter your name.");
+        } else if (strlen($_POST['enquiriesName']) < 2) {
+            array_push($errors, "Please enter at least 2 characters for your name");
         }
         $content = $_POST['enquiriesMessage'];
         if (!$_POST['enquiriesMessage']) {
-            array_push($errors, "A message is required, please enter a value");
+            array_push($errors, "Please enter a message.");
         } else if (strlen($_POST['enquiriesMessage']) < 10) {
-            array_push($errors, "Please enter at least 10 characters for your Message");
+            array_push($errors, "Please enter at least 10 characters for your message.");
         }
         if (!$_POST['enquiriesEmail']) {
-            array_push($errors, "An Email is required, please enter a value");
+            array_push($errors, "Please enter your email.");
         } else if (!filter_var($_POST['enquiriesEmail'], FILTER_VALIDATE_EMAIL)) {
-            array_push($errors, "Please enter a valid email address");
-        }
-        if (!$_POST['enquiriesCourseInterest']) {
-            array_push($errors, "Please select a Course you are intereted in.");
-        } else if ($_POST['enquiriesCourseInterest'] === '') {
-            array_push($errors, "Please select a Course you are intereted in.");
+            array_push($errors, "Please enter a valid email address.");
         }
         if (empty($errors)) {
             $args = array(
@@ -36,11 +30,10 @@ if ($_POST) {
                 'post_type' => 'enquiries',
                 'meta_input' => array(
                     'email' => $_POST['enquiriesEmail'],
-                    'courseInterest' => $_POST['enquiriesCourseInterest']
                 )
             );
             wp_insert_post($args);
-            echo "Your Enquiry has been sent";
+            echo "Your message has been sent";
         }
     }
 }
@@ -83,30 +76,27 @@ if ($_POST) {
             <div class="row">
                 <div class="col">
                     <form action="<?= get_permalink(); ?>" method="post">
-                        <?php wp_nonce_field('wp_enquiery_form'); ?>
+                        <?php wp_nonce_field('wp_enquiry_form'); ?>
                         <div class="form-group">
                             <label for="">Name</label>
                             <input type="text" name="enquiriesName" class="form-control" value="">
                         </div>
                         <div class="form-group">
                             <label for="">Message</label>
-                            <?php wp_editor($content, 'enquiriesMessage', array('textarea_rows' => '10')); ?>
+                            <?php 
+                            $settings = array(
+                                'media_buttons' => false,
+                                'textarea_rows' => '10',
+                                'teeny' => true,
+                                'quicktags' => false);
+                            wp_editor($content, 'enquiriesMessage', $settings); ?>
                         </div>
                         <div class="form-group">
                             <label for="">Email</label>
                             <input type="email" name="enquiriesEmail" class="form-control" value="">
                         </div>
                         <div class="form-group">
-                            <label for="">What Course are you interested In</label>
-                            <select class="form-control" name="enquiriesCourseInterest">
-                                <option value="">Choose a Course</option>
-                                <option value="Course1">Course 1</option>
-                                <option value="Course2">Course 2</option>
-                                <option value="Course3">Course 3</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <input type="submit" name="" value="Send Enquiry" class="btn btn-primary btn-block">
+                            <input type="submit" name="" value="Send message" class="btn btn-primary btn-block">
                         </div>
                     </form>
                 </div>

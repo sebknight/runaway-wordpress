@@ -9,6 +9,7 @@ function runaway_custom_frontend() {
     wp_enqueue_style('main', get_template_directory_uri() . '/assets/css/main.css', array(), '0.0.1', 'all');
     # JS
     wp_enqueue_script('jquery', get_template_directory_uri() . '/assets/js/jquery-3.3.1.min.js', array(), '3.3.1', true);
+    wp_enqueue_script('ajax', get_template_directory_uri() . '/assets/js/ajax.js', array(), '0.0.1', true);
     wp_enqueue_script('main', get_template_directory_uri() . '/assets/js/main.js', array(), '0.0.1', true);
     wp_enqueue_script('responsive-video', get_template_directory_uri() . '/assets/js/responsive-video.js', array(), '0.0.1', true);
 }
@@ -102,7 +103,6 @@ function runaway_remove_version() {
 
 add_filter('the_generator', 'runaway_remove_version');
 
-
 # Including addon files
 
 require_once get_template_directory() . '/inc/navwalker.php';
@@ -117,8 +117,38 @@ require get_parent_theme_file_path('./inc/custom-customizer.php');
 add_action('rest_api_init', 'runaway_api_get_posts');
 
 function runaway_api_get_posts(){
-    register_rest_route( 'posts', '/all-posts', array(
+    register_rest_route( 'portfolio', '/all-posts', array(
         'methods' => 'GET',
         'callback' => 'runaway_api_get_posts_callback'
     ));    
 }
+
+function runaway_api_get_posts_callback($request){
+    $posts_data = array();
+    $paged = $request->get_param('page');
+    $paged = (isset($paged) || !(empty($paged))) ? $paged : 1;
+    $posts = get_posts( array(
+        'post_type'       => 'portfolio',
+        'status'          => 'published',
+        'posts_per_page'  => 3,
+        'orderby'         => 'post_date',
+        'order'           => 'DESC',
+        'paged'           => $paged
+    ));
+
+    foreach($posts as $post){
+    $id = $post->ID;
+    $post_thumbnail = (has_post_thumbnail($id)) ? get_the_post_thumbnail_url($id) : null;
+
+    $posts_data[] = (object)array(
+        'id' => $id,
+        'slug' => $post->post_name,
+        'type' => $post->post_type,
+        'title' => $post->post_title,
+        );
+    }
+    return $posts_data;
+}
+
+#  Remove rich editing in the contact form
+add_filter( 'user_can_richedit' , '__return_false', 50 );

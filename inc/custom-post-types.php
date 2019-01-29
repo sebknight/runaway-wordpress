@@ -76,4 +76,34 @@ function runaway_services_post_type(){
 
 add_action('init', 'runaway_services_post_type');
 
+function runaway_enquiries_post_type(){
+    $labels = array(
+        'name' => _x('Enquiries', 'post type name', 'runaway'),
+        'singular_name' => _x('Enquiry', 'post types singular name', 'runaway'),
+        'add_new_item' => _x('Add New Enquiry', 'adding new enquiry', 'runaway')
+    );
+    $args = array(
+        'labels' => $labels,
+        'description' => 'Enquiries that come through our website',
+        'public' => false,
+        'hierarchical' => true,
+        'exclude_from_search' => true,
+        'show_ui' => true,
+        'show_in_menu' => true,
+        'show_in_nav_menus' => false,
+        'menu_position' => 20,
+        'menu_icon' => 'dashicons-megaphone',
+        'supports' => array(
+            'title',
+            'editor'
+        ),
+        'query_var' => true
+    );
+    register_post_type('enquiries', $args);
+}
+add_action('init', 'runaway_enquiries_post_type');
+
+
 ?>
+
+
