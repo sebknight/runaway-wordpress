@@ -16,6 +16,12 @@ html, body {
     box-sizing: border-box;
 }
 
+.container-404{
+    height: 50vh;
+    width: 100vw;
+}
+
+
 /* .runaway-home > .video-background{
     position: absolute;
     width: 100%;

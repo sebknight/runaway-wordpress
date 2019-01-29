@@ -69,7 +69,8 @@ function runaway_services_post_type(){
         'show_in_nav_menus' => true,
         'menu_position' => 20,
         'menu_icon' => 'dashicons-hammer',
-        'query_var' => true
+        'query_var' => true,
+        'supports' => array( 'title', 'thumbnail', 'editor'  )
     );
     register_post_type('services', $args);
 }
