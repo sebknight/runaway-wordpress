@@ -44,5 +44,5 @@
     </nav>
 
 
-<body <?php body_class($runaway_classes); ?>>
+<body id="page" <?php body_class($runaway_classes); ?>>
     <section class="section">

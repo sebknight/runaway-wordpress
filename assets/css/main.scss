@@ -22,33 +22,71 @@
     padding: 0;
 }
 
-/* Body Styles */
+/* Body Styles and Font Settings */
 
 @font-face {
-    font-family: 'Varela', sans-serif;  
-    src: url(../fonts/Varela-Regular.ttf);  
+    font-family: 'Varela', 'Helvetica', sans-serif;  
+    src: url('../fonts/Varela-Regular.ttf');  
     font-weight: normal;  
 }
 
 
-html, body {
+html, body, #page {
     @include zero-margin;
     position: 0;
     width: 100%;
     height: 100%;
     box-sizing: border-box;
-    font-family: 'Varela', sans-serif;
-    // @include bp(tablet-landscape){
-    //     font-size: 110%;
-    // }
-    // @include bp(desktop){
-    //     font-size: 125%;
-    // }
+    font-family: 'Varela', 'Helvetica', sans-serif;
+    line-height: 1.25;
+        @include bp(tablet-landscape){
+        font-size: 1em;
+        line-height: 1.375;
+    }
 }
 
 h1, h2, h3, a {
     letter-spacing: 3px;
     text-transform: uppercase;
+}
+
+// body, h1, h2, h3, h4, h5, h6 {
+//     font-size-adjust: 0.5;
+// }
+
+h1 {
+    font-size: 2em;
+    @include bp(tablet-landscape){
+        font-size: 2.5em;
+        line-height: 1.125;
+    }
+    @include bp(desktop){
+        font-size: 3em;
+        line-height: 1.05;
+    }
+}
+
+h2 {
+    font-size: 1.625em;
+    line-height: 1.15384615;
+    @include bp(tablet-landscape){
+        font-size: 2em;
+        line-height: 1.25;
+    }
+    @include bp(desktop){
+        font-size: 2.25em;
+        line-height: 1.25;
+    }
+}
+
+
+#page {
+    font-size: 1em;
+    line-height: 1.25;
+    @include bp(tablet-portrait){
+        font-size: 1em;
+        line-height: 1.375;
+    }
 }
 
 .button {
@@ -69,10 +107,8 @@ h1, h2, h3, a {
 }
 
 footer {
-    padding: 1em;
-    margin-bottom: -2em;
     width: 100%;
-    position: absolute;
+    position: fixed;
     bottom: 0;
 }
 
@@ -138,12 +174,30 @@ hr {
     margin: 1em;
     padding: 0;
     min-width: 30%;
+    @include bp(tablet-landscape){
+        min-width: 50%;
+    }
+
 }
 
 .card-services {
     color: inherit;
     background: inherit;
     border: 1px solid black;
+    padding: 1em;
+    margin: 1em;
+    @include bp(tablet-portrait){
+        padding: 1.5em;
+        margin: 1.5em;
+    }
+    @include bp(tablet-landscape){
+        padding: 2em;
+        margin: 2em;
+    }
+    @include bp(desktop){
+        padding: 3em;
+        margin: 3em;
+    }
 }
 
 /* Clients Page */
