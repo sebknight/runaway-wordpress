@@ -400,7 +400,7 @@ function runaway_customizer_styles(){
         }
 
         .about-section {
-            background-color: <?php echo get_theme_mod('about_background_colour_setting', '#000000'); ?> !important;
+            background-color: <?php echo get_theme_mod('about_background_colour_setting', '#ffffff'); ?> !important;
         }
 
         body {

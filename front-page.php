@@ -8,8 +8,8 @@ get_header('front'); ?>
 <section class="hero is-fullheight" style="background-image:url(<?php header_image();?>)">
   <div class="hero-head"></div>
   <div class="hero-body">
-    <div class="card hero-card">
-        <?php if( get_theme_mod( 'hero_card_image' )) : ?>
+      <?php if( get_theme_mod( 'hero_card_image' )) : ?>
+      <div class="card hero-card">
           <div class="card-image">
             <img class="hero-card-image" src="<?php echo get_theme_mod( 'hero_card_image' )?>">
           </div>
