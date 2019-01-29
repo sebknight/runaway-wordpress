@@ -27,7 +27,7 @@ get_header('front'); ?>
 
   <div class="hero-foot"></div>
   </section>
-  <section class="section ">
+  <section class="section about-section">
         <?php if( get_theme_mod( 'about_heading' )) : ?>
           <div class="level">
             <div class="level-item">

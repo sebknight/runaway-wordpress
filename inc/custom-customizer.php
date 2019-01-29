@@ -337,7 +337,30 @@ function runaway_customizer( $wp_customize ){
         )
     );
 
+    # About background colour
 
+    $wp_customize->add_section( 'about_background_colour', array(
+        'title' => __('Change about section background colour', 'runawaytheme'),
+        'panel' => 'home_page',
+        'priority' => 80
+    ) );
+
+    $wp_customize->add_setting('about_background_colour_setting', array(
+        'default' => '#000000',
+        'transport' => 'refresh'
+    ));
+
+    $wp_customize->add_control(
+        new WP_Customize_Color_Control(
+            $wp_customize,
+            'about_background_colour',
+            array(
+                'label' => __('About Section Background Colour', 'runawaytheme'),
+                'section' => 'about_background_colour',
+                'settings' => 'about_background_colour_setting'
+            )
+        )
+    );
 
     function sanitize_text( $text ){
         return sanitize_text_field( $text );
@@ -364,6 +387,10 @@ function runaway_customizer_styles(){
         .hero-card {
             background-color: <?php echo get_theme_mod('hero_card_background_colour_setting', '#000000'); ?> !important;
             color: <?php echo get_theme_mod('hero_card_text_colour_setting', '#ffffff'); ?> !important;
+        }
+
+        .about-section {
+            background-color: <?php echo get_theme_mod('about_background_colour_setting', '#000000'); ?> !important;
         }
 
         body {

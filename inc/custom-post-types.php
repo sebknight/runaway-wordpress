@@ -9,6 +9,7 @@ function runaway_portfolio_post_type(){
 
     $args = array(
         'labels' => $labels,
+        'has_archive' => true,
         'description' => 'post type for portfolio items',
         'public' => true,
         'hierarchical' => false,

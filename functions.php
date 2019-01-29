@@ -116,3 +116,12 @@ require get_parent_theme_file_path('./inc/custom-customizer.php');
 
 #  Remove rich editing in the contact form
 add_filter( 'user_can_richedit' , '__return_false', 50 );
+
+
+# AJAX
+$ajaxurl .= admin_url( 'admin-ajax.php');
+wp_localize_script( 'runaway-script', 'ajax_loader', array(
+    'ajaxurl' => $ajaxurl,
+	'noposts'  => esc_html__('No older posts found', 'runawaytheme'),
+	'loadmore' => esc_html__('Load more', 'runawaytheme')
+) );

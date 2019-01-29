@@ -4,8 +4,7 @@
     //     //custom queries
     // } else {
 ?>
-
-        <h3>Test</h3>
+    <main id="main" class="site-main ajax_posts" role="main">
     <!-- Standard post loop -->
     <?php 
         if( have_posts() ):
