@@ -370,6 +370,11 @@ function runaway_customizer_styles(){
             color: <?php echo get_theme_mod('sitewide_font_colour_setting', '#000000'); ?> !important;
         }
 
+        .card-services {
+            border: 1px solid <?php echo get_theme_mod('sitewide_font_colour_setting', '#000000'); ?> !important;
+        }
+
+
     </style>
 <?php  
 }

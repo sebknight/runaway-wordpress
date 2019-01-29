@@ -48,6 +48,11 @@ footer {
   bottom: 0;
 }
 
+hr {
+  width: 80%;
+  border-top: 1px solid #888888;
+}
+
 /* Home Page */
 .hero-body {
   -ms-flex-line-pack: center;
@@ -115,6 +120,8 @@ footer {
 }
 
 .card-services {
+  color: inherit;
+  background: inherit;
   border: 1px solid black;
 }
 
