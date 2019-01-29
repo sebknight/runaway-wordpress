@@ -12,7 +12,27 @@
 // Background color
 
 function runaway_customizer( $wp_customize ){
+    
+    ##########################
+    # SITEWIDE CUSTOMIZATIONS #
+    #########################
 
+    $wp_customize->add_setting('sitewide_font_colour_setting', array(
+        'default' => '#000000',
+        'transport' => 'refresh'
+    ));
+
+    $wp_customize->add_control(
+        new WP_Customize_Color_Control(
+            $wp_customize,
+            'sitewide_font_colour_setting',
+            array(
+                'label' => __('Body Font Colour', 'runawaytheme'),
+                'section' => 'colors',
+                'settings' => 'sitewide_font_colour_setting'
+            )
+        )
+    );
     ##########################
     # HEADER CUSTOMIZATIONS #
     #########################
@@ -132,48 +152,24 @@ function runaway_customizer( $wp_customize ){
     );    
 
     #############################
-    # TEXT BLOCK CUSTOMIZATIONS #
+    # HOME PAGE CUSTOMIZATIONS #
     #############################
 
-    $wp_customize->add_panel( 'text_blocks', array(
-        'priority' => 500,
+    $wp_customize->add_panel( 'home_page', array(
+        'priority' => 100,
         'theme_supports' => '',
-        'title' => __('Text Blocks', 'runawaytheme'),
-        'description' => __('Set editable text content', 'runawaytheme'),
-    ) );
+        'title' => __('Home Page Customizations', 'runawaytheme'),
+        'description' => __('Customize home page', 'runawaytheme'),
 
-    # About text
-
-    $wp_customize->add_section( 'custom_about_text', array(
-        'title' => __('Change home page about text', 'runawaytheme'),
-        'panel' => 'text_blocks',
-        'priority' => 10
     ) );
-
-    $wp_customize->add_setting( 'about_text_block', array(
-        'default'=>__('Default about text', 'runawaytheme'),
-        'sanitize_callback'=>'sanitize_text'
-    ) );
-    
-    $wp_customize->add_control( new WP_Customize_Control(
-        $wp_customize,
-            'custom_about_text',
-                array(
-                    'label' => __('About text', 'runawaytheme'),
-                    'section' => 'custom_about_text',
-                    'settings'=> 'about_text_block',
-                    'type' => 'text'
-                )
-        )
-    );
 
     # Hero text
 
     $wp_customize->add_section( 'custom_hero_text', array(
-    'title' => __('Change home page hero text', 'runawaytheme'),
-    'panel' => 'text_blocks',
-    'priority' => 20
-) );
+        'title' => __('Change home page hero text', 'runawaytheme'),
+        'panel' => 'home_page',
+        'priority' => 20
+    ) );
 
     $wp_customize->add_setting( 'hero_text_block', array(
         'default'=>__('Default hero text', 'runawaytheme'),
@@ -191,6 +187,156 @@ function runaway_customizer( $wp_customize ){
                 )
         )
     );
+
+    # Hero card image
+
+    $wp_customize->add_section( 'custom_hero_card_image', array(
+        'title' => __('Change home page hero card image', 'runawaytheme'),
+        'panel' => 'home_page',
+        'priority' => 10
+    ) );
+
+    $wp_customize->add_setting( 'hero_card_image', array(
+        'default'=>__('', 'runawaytheme'),
+    ) );
+
+    $wp_customize->add_control(
+        new WP_Customize_Image_Control(
+            $wp_customize,
+            'hero_image',
+            array(
+                'label'      => __( 'Upload a hero card image', 'runawaytheme' ),
+                'section'    => 'custom_hero_card_image',
+                'settings'   => 'hero_card_image',
+            )
+        )
+    );
+
+    # Hero card background colour
+
+    $wp_customize->add_section( 'hero_card_background_colour', array(
+        'title' => __('Change hero card background colour', 'runawaytheme'),
+        'panel' => 'home_page',
+        'priority' => 70
+    ) );
+
+    $wp_customize->add_setting('hero_card_background_colour_setting', array(
+        'default' => '#000000',
+        'transport' => 'refresh'
+    ));
+
+    $wp_customize->add_control(
+        new WP_Customize_Color_Control(
+            $wp_customize,
+            'hero_card_background_colour',
+            array(
+                'label' => __('Hero Card Background Colour', 'runawaytheme'),
+                'section' => 'hero_card_background_colour',
+                'settings' => 'hero_card_background_colour_setting'
+            )
+        )
+    );
+
+    # Hero card text colour
+
+    $wp_customize->add_section( 'hero_card_text_colour', array(
+        'title' => __('Change hero card text colour', 'runawaytheme'),
+        'panel' => 'home_page',
+        'priority' => 80
+    ) );
+
+    $wp_customize->add_setting('hero_card_text_colour_setting', array(
+        'default' => '#ffffff',
+        'transport' => 'refresh'
+    ));
+
+    $wp_customize->add_control(
+        new WP_Customize_Color_Control(
+            $wp_customize,
+            'hero_card_text_colour',
+            array(
+                'label' => __('Hero Card Text Colour', 'runawaytheme'),
+                'section' => 'hero_card_text_colour',
+                'settings' => 'hero_card_text_colour_setting'
+            )
+        )
+    );
+
+
+    # About text
+
+    $wp_customize->add_section( 'custom_about_text', array(
+        'title' => __('Change home page about text', 'runawaytheme'),
+        'panel' => 'home_page',
+        'priority' => 60
+    ) );
+
+    $wp_customize->add_setting( 'about_text_block', array(
+        'default'=>__('', 'runawaytheme'),
+        'sanitize_callback'=>'sanitize_text'
+    ) );
+    
+    $wp_customize->add_control( new WP_Customize_Control(
+        $wp_customize,
+            'custom_about_text',
+                array(
+                    'label' => __('About text', 'runawaytheme'),
+                    'section' => 'custom_about_text',
+                    'settings'=> 'about_text_block',
+                    'type' => 'text'
+                )
+        )
+    );
+
+    # About heading
+
+    $wp_customize->add_section( 'custom_about_heading', array(
+        'title' => __('Change home page about heading', 'runawaytheme'),
+        'panel' => 'home_page',
+        'priority' => 30
+    ) );
+
+    $wp_customize->add_setting( 'about_heading', array(
+        'default'=>__('', 'runawaytheme'),
+        'sanitize_callback'=>'sanitize_text'
+    ) );
+    
+    $wp_customize->add_control( new WP_Customize_Control(
+        $wp_customize,
+            'custom_about_heading',
+                array(
+                    'label' => __('About heading', 'runawaytheme'),
+                    'section' => 'custom_about_heading',
+                    'settings'=> 'about_heading',
+                    'type' => 'text'
+                )
+        )
+    );    
+
+    # About image
+
+    $wp_customize->add_section( 'custom_about_image', array(
+        'title' => __('Change home page about image', 'runawaytheme'),
+        'panel' => 'home_page',
+        'priority' => 40
+    ) );
+
+    $wp_customize->add_setting( 'about_image', array(
+        'default'=>__('', 'runawaytheme'),
+    ) );
+
+    $wp_customize->add_control(
+        new WP_Customize_Image_Control(
+            $wp_customize,
+            'about_image',
+            array(
+                'label'      => __( 'Upload an about image', 'runawaytheme' ),
+                'section'    => 'custom_about_image',
+                'settings'   => 'about_image',
+            )
+        )
+    );
+
 
 
     function sanitize_text( $text ){
@@ -214,6 +360,16 @@ function runaway_customizer_styles(){
             background-color: <?php echo get_theme_mod('footer_background_colour_setting', '#ffffff'); ?> !important;
             color: <?php echo get_theme_mod('footer_text_colour_setting', '#000000'); ?> !important;
         }
+        
+        .hero-card {
+            background-color: <?php echo get_theme_mod('hero_card_background_colour_setting', '#000000'); ?> !important;
+            color: <?php echo get_theme_mod('hero_card_text_colour_setting', '#ffffff'); ?> !important;
+        }
+
+        body {
+            color: <?php echo get_theme_mod('sitewide_font_colour_setting', '#000000'); ?> !important;
+        }
+
     </style>
 <?php  
 }

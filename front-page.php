@@ -9,40 +9,50 @@ get_header('front'); ?>
   <div class="hero-head"></div>
   <div class="hero-body">
 
-    <?php 
-    if( get_theme_mod( 'hero_text_block' ) !="") : ?>
-      <div class="card hero-card">
-      <div class="card-content">
-        <?php 
-            echo get_theme_mod( 'hero_text_block' );
-          ?>
-      </div>
+    <div class="card hero-card">
+        <?php if( get_theme_mod( 'hero_card_image' )) : ?>
+          <div class="card-image">
+            <img class="hero-card-image" src="<?php echo get_theme_mod( 'hero_card_image' )?>">
+          </div>
+        <?php endif; ?>
+
+        <?php if( get_theme_mod( 'hero_text_block' ) !="") : ?>
+          <div class="card-content">
+            <h1><?php echo get_theme_mod( 'hero_text_block' ); ?></h1>
+          </div>
+        <?php endif; ?>
     </div>
-  <?php endif; ?>
 
   </div>
 
   <div class="hero-foot"></div>
-</section>
+  </section>
+  <section class="section ">
+        <?php if( get_theme_mod( 'about_heading' )) : ?>
+          <div class="level">
+            <div class="level-item">
+              <h2><?php echo get_theme_mod( 'about_heading' )?></h2>
+            </div>
+          </div>
+        <?php endif; ?>
+        
+        <?php if( get_theme_mod( 'about_image' )) : ?>
+          <div class="level">
+            <div class="level-item">
+              <img class="about-image" src="<?php echo get_theme_mod( 'about_image' )?>">
+            </div>
+          </div>
+        <?php endif; ?>
 
-<!-- // Make this a featured post instead -->
-<!-- <section class="section about">
-  <div class="container">
-    <figure class="about-image image is-4by3">
-      <img src="https://bulma.io/images/placeholders/1280x960.png" alt="Placeholder image">
-    </figure>
-
-    <?php if( get_theme_mod( 'about_text_block' ) !="") : ?>
-      <div class="content">
-        <?php echo get_theme_mod( 'about_text_block' ); ?>
+          <?php if( get_theme_mod( 'about_text_block' ) !="") : ?>
+            <div class="level">
+              <div class="level-item content">
+                <?php echo get_theme_mod( 'about_text_block' ); ?>
+              </div>
+            </div>
+          <?php endif; ?>
       </div>
-    <?php endif; ?>
-    
-    <div class="level about-buttons">
-
-    </div>
-  </div>
-</section> -->
+  </section>
+    <?php get_footer('front'); ?>
 
 
-<?php get_footer('front'); ?>

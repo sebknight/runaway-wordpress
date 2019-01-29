@@ -79,7 +79,24 @@ footer {
 
 .hero-card {
     z-index: 1;
+    text-align: center;
+    padding: 1em;
 }
+
+.hero-card-image {
+    max-height: 300px;
+}
+
+
+
+.about-image {
+    max-height: 500px;
+    max-width: auto;
+}
+
+// .section-about {
+    
+// }
 
 /* Portfolio Page */
 

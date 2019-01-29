@@ -3,7 +3,6 @@
         <!-- Section ENDS -->
         <footer>
             <div class="level">
-                <?php if ?>
                 <div class="level-item">
                 <?php 
                     if( get_theme_mod( 'footer_text_block') !=""){

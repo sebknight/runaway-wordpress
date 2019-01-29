@@ -10,16 +10,11 @@
         <div>
             <?php the_post_thumbnail('thumbnail'); ?>
         </div>
+        <?php endif; ?>
+
         <div>
             <?php the_title('<h2 class="title">','</h2>'); ?>
         </div>
-        <?php endif; ?>
-
-        <small>
-        <?php  echo runaway_get_terms($post->ID, 'work');?>
-        
-         || <?php echo runaway_get_terms($post->ID, 'client'); ?></small>
-
             <?php 
          endwhile;
             endif;
