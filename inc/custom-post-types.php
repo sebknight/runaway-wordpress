@@ -43,7 +43,8 @@ function runaway_client_post_type(){
         'show_in_nav_menus' => true,
         'menu_position' => 20,
         'menu_icon' => 'dashicons-admin-users',
-        'query_var' => true
+        'query_var' => true,
+        'supports' =>  array( 'title', 'editor', 'thumbnail' )
     );    register_post_type('clients', $args);
 
 }
@@ -70,7 +71,7 @@ function runaway_services_post_type(){
         'menu_position' => 20,
         'menu_icon' => 'dashicons-hammer',
         'query_var' => true,
-        'supports' => array( 'title', 'thumbnail', 'editor'  )
+        'supports' => array( 'title', 'editor'  )
     );
     register_post_type('services', $args);
 }

@@ -55,4 +55,3 @@
 <body <?php body_class($runaway_classes); ?>>
 
     <section class="section">
-        <div class="columns">

@@ -11,7 +11,7 @@
                         <h1><?php the_title(); ?></h1>              
                     </div>
                 </div>
-                <div class="level Client-container">
+                <div class="client-container">
                     <?php 
                         $args = array(
                             'post_type' => 'clients',
@@ -23,15 +23,22 @@
                     ?>
                     <?php if( $allClientPosts->have_posts() ):
                         while( $allClientPosts->have_posts() ): $allClientPosts->the_post(); ?>
-                        <div class="post">
-                        <?php the_content(); ?>
+                        <div class="level client-level">
+                            <div class="post client-post">
+                                <h2><?php the_title(); ?></h2>
+                                <br>
+                                <p><?php the_content(); ?></p>
+                            </div>
+                            <?php if( has_post_thumbnail() ): ?>
+                                <div class="level-item client-logo"><?php the_post_thumbnail('thumbnail'); ?></div>
+                            <?php endif; ?>
+                            
                         </div>
+                        <hr>
                     <?php endwhile; ?>
 
                 </div>
-                <div class="level">
-                    <a href="#" class="button">SEE MORE</a>
-                </div>
+
 
                 <?php endif; ?>
 

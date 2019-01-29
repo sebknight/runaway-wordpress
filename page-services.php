@@ -1,35 +1,35 @@
 <?php 
     /* Template Name: Services Page */
     
-    get_header('front'); ?>
+    get_header(); ?>
 
     <?php if( have_posts() ): 
         while( have_posts() ): the_post(); ?>
-
             <div class="level">
                 <div class="level-item">
                     <h1><?php the_title(); ?></h1>              
                 </div>
             </div>
 
-            <div class="columns">
+            <!-- <div class="container container-services"> -->
+                <div class="columns columns-services">
                 <?php 
                     $args = array(
                         'post_type' => 'services',
                         'order' => 'ASC',
                         'orderby' => 'title',
+                        'posts_per_page' => -1
                     );
                     $allServicesPosts = new WP_Query($args)
                 ?>
 
                 <?php if( $allServicesPosts->have_posts() ):
                     while( $allServicesPosts->have_posts() ): $allServicesPosts->the_post(); ?>
-                        <div class="column">
-                                                
-                            <div class="card">
-                                <?php if ( has_post_thumbnail() ): ?>
-                                    <div class="card-image"><?php the_post_thumbnail('thumbnail'); ?></div>
-                                <?php endif; ?>
+                        <div class="column column-services">                                          
+                            <div class="card card-services">
+                                <!-- <?php if ( has_post_thumbnail() ): ?>
+                                    <div class="card-image"><?php the_post_thumbnail('medium'); ?></div>
+                                <?php endif; ?> -->
                                 <div class="card-header-title is-centered">
                                     <h2><?php the_title(); ?></h2>
                                 </div>
@@ -37,12 +37,12 @@
                                     <?php the_content(); ?>
                                 </div>
                             </div>
-                            
                         </div>
                     <?php endwhile; ?>
                 <?php endif; ?>
-
-            </div> 
+                </div>
+            <!-- </div>  -->
         <?php endwhile; ?>
     <?php endif; ?>
+    
 <?php get_footer(); ?>

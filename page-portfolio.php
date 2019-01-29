@@ -2,12 +2,6 @@
     /* Template Name: Portfolio Page */
     
     get_header(); ?>
-    
-    <?php if ( is_active_sidebar( 'portfolio-sidebar' ) ) : ?>
-        <div class="column is-one-quarter sidebar">
-            <?php dynamic_sidebar('portfolio-sidebar'); ?> 
-        </div>
-    <?php endif; ?>
 
     <?php if( have_posts() ): 
         while( have_posts() ): the_post(); ?>

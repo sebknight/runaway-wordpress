@@ -12,7 +12,10 @@
 // Background color
 
 function runaway_customizer( $wp_customize ){
-    # Header customization
+
+    ##########################
+    # HEADER CUSTOMIZATIONS #
+    #########################
 
     $wp_customize->add_section('runaway_header_info', array(
         'title' => __('Header Styles', 'runawaytheme'),
@@ -20,7 +23,7 @@ function runaway_customizer( $wp_customize ){
     ));
 
     $wp_customize->add_setting('header_background_colour_setting', array(
-        'default' => 'rgba(0,0,0,0)',
+        'default' => '#ffffff',
         'transport' => 'refresh'
     ));
 
@@ -36,6 +39,13 @@ function runaway_customizer( $wp_customize ){
         )
     );
 
+    # Header link colours
+
+    $wp_customize->add_setting('header_link_colour_setting', array(
+        'default' => '#ffffff',
+        'transport' => 'refresh'
+    ));
+
     $wp_customize->add_control(
         new WP_Customize_Color_Control(
             $wp_customize,
@@ -48,13 +58,91 @@ function runaway_customizer( $wp_customize ){
         )
     );
 
-    # Text block customizations
+    ##########################
+    # FOOTER CUSTOMIZATIONS #
+    #########################
+
+    $wp_customize->add_section('runaway_footer_info', array(
+        'title' => __('Footer Styles', 'runawaytheme'),
+        'priority' => 400,
+        'theme_supports' => '',
+    ));
+
+    # Footer background colour 
+
+    $wp_customize->add_setting('footer_background_colour_setting', array(
+        'default' => '#ffffff',
+        'transport' => 'refresh'
+    ));
+
+    $wp_customize->add_control(
+        new WP_Customize_Color_Control(
+            $wp_customize,
+            'footer_background_colour_control',
+            array(
+                'label' => __('Footer Background Color', 'runawaytheme'),
+                'section' => 'runaway_footer_info',
+                'settings' => 'footer_background_colour_setting'
+            )
+        )
+    );
+
+    # Footer text colours
+
+    $wp_customize->add_setting('footer_text_colour_setting', array(
+        'default' => '#000000',
+        'transport' => 'refresh'
+    ));
+
+    $wp_customize->add_control(
+        new WP_Customize_Color_Control(
+            $wp_customize,
+            'footer_text_colour_control',
+            array(
+                'label' => __('Footer Text Color', 'runawaytheme'),
+                'section' => 'runaway_footer_info',
+                'settings' => 'footer_text_colour_setting'
+            )
+        )
+    );
+
+    # Footer text
+
+    $wp_customize->add_section( 'custom_footer_text', array(
+    'title' => __('Change footer text', 'runawaytheme'),
+    'panel' => 'runaway_footer_info',
+    'priority' => 10
+    ) );
+
+    $wp_customize->add_setting( 'footer_text_block', array(
+        'default'=>__('Default footer text', 'runawaytheme'),
+        'sanitize_callback'=>'sanitize_text'
+    ) );
+    
+    $wp_customize->add_control( new WP_Customize_Control(
+        $wp_customize,
+            'custom_footer_text',
+                array(
+                    'label' => __('Footer text', 'runawaytheme'),
+                    'section' => 'runaway_footer_info',
+                    'settings'=> 'footer_text_block',
+                    'type' => 'text'
+                )
+        )
+    );    
+
+    #############################
+    # TEXT BLOCK CUSTOMIZATIONS #
+    #############################
+
     $wp_customize->add_panel( 'text_blocks', array(
         'priority' => 500,
         'theme_supports' => '',
         'title' => __('Text Blocks', 'runawaytheme'),
         'description' => __('Set editable text content', 'runawaytheme'),
     ) );
+
+    # About text
 
     $wp_customize->add_section( 'custom_about_text', array(
         'title' => __('Change home page about text', 'runawaytheme'),
@@ -80,6 +168,7 @@ function runaway_customizer( $wp_customize ){
     );
 
     # Hero text
+
     $wp_customize->add_section( 'custom_hero_text', array(
     'title' => __('Change home page hero text', 'runawaytheme'),
     'panel' => 'text_blocks',
@@ -103,53 +192,6 @@ function runaway_customizer( $wp_customize ){
         )
     );
 
-    # Footer text
-    $wp_customize->add_section( 'custom_footer_text', array(
-    'title' => __('Change footer text', 'runawaytheme'),
-    'panel' => 'text_blocks',
-    'priority' => 30
-) );
-
-    $wp_customize->add_setting( 'footer_text_block', array(
-        'default'=>__('Default footer text', 'runawaytheme'),
-        'sanitize_callback'=>'sanitize_text'
-    ) );
-    
-    $wp_customize->add_control( new WP_Customize_Control(
-        $wp_customize,
-            'custom_footer_text',
-                array(
-                    'label' => __('Footer text', 'runawaytheme'),
-                    'section' => 'custom_footer_text',
-                    'settings'=> 'footer_text_block',
-                    'type' => 'text'
-                )
-        )
-    );    
-
-    # F
-    $wp_customize->add_section( 'custom_footer_text', array(
-    'title' => __('Change footer text', 'runawaytheme'),
-    'panel' => 'text_blocks',
-    'priority' => 30
-) );
-
-    $wp_customize->add_setting( 'footer_text_block', array(
-        'default'=>__('Default footer text', 'runawaytheme'),
-        'sanitize_callback'=>'sanitize_text'
-    ) );
-    
-    $wp_customize->add_control( new WP_Customize_Control(
-        $wp_customize,
-            'custom_footer_text',
-                array(
-                    'label' => __('Footer text', 'runawaytheme'),
-                    'section' => 'custom_footer_text',
-                    'settings'=> 'footer_text_block',
-                    'type' => 'text'
-                )
-        )
-    );    
 
     function sanitize_text( $text ){
         return sanitize_text_field( $text );
@@ -164,8 +206,13 @@ function runaway_customizer_styles(){
         /* .header-bg{
             background-color: <?php echo get_theme_mod('header_background_colour_setting') ?> */
         .navbar, .navbar-item {
-            background-color: <?php echo get_theme_mod('header_background_colour_setting', 'rgba(0,0,0,0.1'); ?> !important;
+            background-color: <?php echo get_theme_mod('header_background_colour_setting', '#ffffff'); ?> !important;
             color: <?php echo get_theme_mod('header_link_colour_setting', '#000000'); ?> !important;
+        }
+
+        footer {
+            background-color: <?php echo get_theme_mod('footer_background_colour_setting', '#ffffff'); ?> !important;
+            color: <?php echo get_theme_mod('footer_text_colour_setting', '#000000'); ?> !important;
         }
     </style>
 <?php  

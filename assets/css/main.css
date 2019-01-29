@@ -1,100 +1,121 @@
+/* Media Queries */
+/* Utility Mixins */
+/* Body Styles */
 @font-face {
-    font-family: 'Varela', sans-serif;  
-    src: url(../fonts/Varela-Regular.ttf);  
-    font-weight: normal;  
+  font-family: 'Varela', sans-serif;
+  src: url(../fonts/Varela-Regular.ttf);
+  font-weight: normal;
 }
 
-* {
-    font-family: 'Varela', sans-serif;
-}
 html, body {
-    width: 100%;
-    height: 100%;
-    padding: 0;
-    margin: 0;
-    position: 0;
-    box-sizing: border-box;
+  margin: 0 auto;
+  padding: 0;
+  position: 0;
+  width: 100%;
+  height: 100%;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  font-family: 'Varela', sans-serif;
 }
-
-.container-404{
-    height: 50vh;
-    width: 100vw;
-}
-
-
-/* .runaway-home > .video-background{
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-} */
 
 h1, h2, h3, a {
-    letter-spacing: 3px;
-    text-transform: uppercase;
+  letter-spacing: 3px;
+  text-transform: uppercase;
 }
-/* .runaway {
-    background: seagreen;
-} */
 
-/* .section {
-    padding: 0;
-    margin: 0 auto;
-} */
 .button {
-    background: white;
-    color: black;
-    letter-spacing: 3px;
-    border: solid black 1px;
+  background: white;
+  color: black;
+  letter-spacing: 3px;
+  border: solid black 1px;
 }
 
 .button:hover, link:hover {
-    color: white;
-    background: black;
+  color: white;
+  background: black;
 }
 
 .navbar, #navbar {
-    letter-spacing: 3px;
-    text-transform: uppercase;
+  letter-spacing: 3px;
+  text-transform: uppercase;
 }
 
+footer {
+  padding: 1em;
+  margin-bottom: -2em;
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+}
+
+/* Home Page */
 .hero-body {
-    align-content: center;
-    justify-content: center;
+  -ms-flex-line-pack: center;
+      align-content: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
 .hero-card {
-    z-index: 1;
+  z-index: 1;
 }
 
+/* Portfolio Page */
 .portfolio-container {
-    height: 100%;
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: row;
-    margin: 0 auto;
-    /* flex-basis: 25%; */
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  margin: 0 auto;
+  /* flex-basis: 25%; */
 }
 
 .post {
-    min-width: 33%;
-    /* flex-grow: 1; */
-    /* flex: 1 0 200px; */
-    /* margin: 1em;
+  min-width: 33%;
+  /* flex-grow: 1; */
+  /* flex: 1 0 200px; */
+  /* margin: 1em;
     padding: 1em; */
 }
 
-.menu-item-object-services {
-    background: red;
+/* Services Page */
+.columns-services {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
 }
 
-.dropped-down {
-    background: blue;
+.column-services {
+  margin: 1em;
+  padding: 0;
+  min-width: 30%;
 }
+
+.card-services {
+  border: 1px solid black;
+}
+
+/* Clients Page */
+.client-post {
+  width: 50%;
+  padding: 2em;
+}
+
+/* 404 Page */
+.container-404 {
+  height: 50vh;
+  width: 100vw;
+}
+/*# sourceMappingURL=main.css.map */
