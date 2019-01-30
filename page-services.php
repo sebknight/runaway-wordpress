@@ -11,7 +11,7 @@
                     <h1><?php the_title(); ?></h1>              
                 </div>
             </div>
-            <div class="services-container">                                          
+            <div class="container services-container">                                          
                 <?php 
                     $args = array(
                         'post_type' => 'services',
@@ -33,9 +33,9 @@
                             <?php the_content(); ?>
                         </div>
                     </div>
-                </div>
                 <?php endwhile; ?>
             <?php endif; ?>
+        </div>
         </div> 
         <?php endwhile; ?>
     <?php endif; ?>
