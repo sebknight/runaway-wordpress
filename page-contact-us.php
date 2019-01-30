@@ -43,17 +43,17 @@ if ($_POST) {
 
 <?php if (have_posts()) : ?>
     <?php while (have_posts()) : the_post(); ?>
-        <div class="container">
+        <div class="section">
 
-            <div class="row">
-                <div class="col">
+            <div class="level">
+                <div class="level-item">
                     <h1><?php the_title(); ?></h1>
                 </div>
             </div>
 
-            <div class="row">
-                <div class="col">
-                    <div class="wp_content">
+            <div class="level">
+                <div class="level-item">
+                    <div class="content">
                         <?php the_content(); ?>
                     </div>
                 </div>
@@ -73,30 +73,34 @@ if ($_POST) {
                 </div>
             <?php endif; ?>
 
-            <div class="row">
-                <div class="col">
+            <div class="level">
+                <div class="level-item">
                     <form action="<?= get_permalink(); ?>" method="post">
                         <?php wp_nonce_field('wp_enquiry_form'); ?>
-                        <div class="form-group">
-                            <label for="">Name</label>
-                            <input type="text" name="enquiriesName" class="form-control" value="">
+                        <div class="field">
+                            <label class="label">Name</label>
+                            <div class="control">
+                                <input type="text" name="enquiriesName" class="input" value="">
+                            </div>
                         </div>
-                        <div class="form-group">
-                            <label for="">Message</label>
-                            <?php 
-                            $settings = array(
-                                'media_buttons' => false,
-                                'textarea_rows' => '10',
-                                'teeny' => true,
-                                'quicktags' => false);
-                            wp_editor($content, 'enquiriesMessage', $settings); ?>
+                        <div class="field">
+                            <label class="label">Message</label>
+                            <div class="control">
+                                <?php 
+                                $settings = array(
+                                    'media_buttons' => false,
+                                    'textarea_rows' => '10',
+                                    'teeny' => true,
+                                    'quicktags' => false);
+                                wp_editor($content, 'enquiriesMessage', $settings); ?>
+                            </div>
                         </div>
-                        <div class="form-group">
-                            <label for="">Email</label>
-                            <input type="email" name="enquiriesEmail" class="form-control" value="">
+                        <div class="field">
+                            <label class="label">Email</label>
+                            <input class="input" type="email" name="enquiriesEmail" value="">
                         </div>
-                        <div class="form-group">
-                            <input type="submit" name="" value="Send message" class="btn btn-primary btn-block">
+                        <div class="control">
+                            <input type="submit" name="" value="SEND MESSAGE" class="button">
                         </div>
                     </form>
                 </div>

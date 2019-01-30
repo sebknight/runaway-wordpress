@@ -5,14 +5,13 @@
 
     <?php if( have_posts() ): 
         while( have_posts() ): the_post(); ?>
+        <div class="column">
             <div class="level">
                 <div class="level-item">
                     <h1><?php the_title(); ?></h1>              
                 </div>
             </div>
-
-            <!-- <div class="container container-services"> -->
-                <div class="columns">
+            <div class="services-container">                                          
                 <?php 
                     $args = array(
                         'post_type' => 'services',
@@ -23,25 +22,21 @@
                     $allServicesPosts = new WP_Query($args)
                 ?>
 
-                <?php if( $allServicesPosts->have_posts() ):
-                    while( $allServicesPosts->have_posts() ): $allServicesPosts->the_post(); ?>
-                        <div class="column column-services">                                          
-                            <div class="card card-services">
-                                <!-- <?php if ( has_post_thumbnail() ): ?>
-                                    <div class="card-image"><?php the_post_thumbnail('medium'); ?></div>
-                                <?php endif; ?> -->
-                                <div class="card-header-title is-centered">
-                                    <h2><?php the_title(); ?></h2>
-                                </div>
-                                <div class="card-content">
-                                    <?php the_content(); ?>
-                                </div>
-                            </div>
+                <?php 
+                if( $allServicesPosts->have_posts() ):
+                while( $allServicesPosts->have_posts() ): $allServicesPosts->the_post(); ?>
+                    <div class="card card-services">
+                        <div class="card-header-title is-centered">
+                            <h2><?php the_title(); ?></h2>
                         </div>
-                    <?php endwhile; ?>
-                <?php endif; ?>
+                        <div class="card-content">
+                            <?php the_content(); ?>
+                        </div>
+                    </div>
                 </div>
-            <!-- </div>  -->
+                <?php endwhile; ?>
+            <?php endif; ?>
+        </div> 
         <?php endwhile; ?>
     <?php endif; ?>
     

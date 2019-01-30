@@ -11,20 +11,19 @@
                         <h1><?php the_title(); ?></h1>              
                     </div>
                 </div>
-                <div class="level portfolio-container">
-            <?php 
-                $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
-                $get_portfolio = new WP_Query(array(
-                    'post_type'     => 'portfolio', 
-                    'status'        => 'published', 
-                    'orderby'	=> 'post_date',
-                    'order'         => 'DESC',
-                    'paged'         => $paged
-                ));
-                    ?>
+                <div class="portfolio-container">
+                <?php 
+                    $args = array(
+                        'post_type' => 'portfolio',
+                        'order' => 'ASC',
+                        'orderby' => 'title',
+                        'posts_per_page' => -1
+                    );
+                    $allPortfolioPosts = new WP_Query($args)
+                ?>
 
-                <?php if( $get_portfolio->have_posts() ) :
-                    while( $get_portfolio->have_posts() ) : $get_portfolio->the_post(); ?>
+                <?php if( $allPortfolioPosts->have_posts() ) :
+                    while( $allPortfolioPosts->have_posts() ) : $allPortfolioPosts->the_post(); ?>
                     <div class="portfolio-post">
                     <?php the_content(); ?>
                     </div>

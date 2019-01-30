@@ -27,7 +27,7 @@ function runaway_customizer( $wp_customize ){
 
     $wp_customize->add_section('runaway_header_info', array(
         'title' => __('Header Styles', 'runawaytheme'),
-        'priority' => 20
+        'priority' => 10
     ));
 
     $wp_customize->add_setting('header_background_colour_setting', array(
@@ -50,7 +50,7 @@ function runaway_customizer( $wp_customize ){
     # Header link colours
 
     $wp_customize->add_setting('header_link_colour_setting', array(
-        'default' => '#ffffff',
+        'default' => '#000000',
         'transport' => 'refresh'
     ));
 
@@ -119,7 +119,7 @@ function runaway_customizer( $wp_customize ){
     $wp_customize->add_section( 'custom_footer_text', array(
     'title' => __('Change footer text', 'runawaytheme'),
     'panel' => 'runaway_footer_info',
-    'priority' => 10
+    'priority' => 20
     ) );
 
     $wp_customize->add_setting( 'footer_text_block', array(
@@ -156,7 +156,7 @@ function runaway_customizer( $wp_customize ){
     $wp_customize->add_section( 'custom_hero_text', array(
         'title' => __('Change home page hero text', 'runawaytheme'),
         'panel' => 'home_page',
-        'priority' => 20
+        'priority' => 30
     ) );
 
     $wp_customize->add_setting( 'hero_text_block', array(
@@ -181,7 +181,7 @@ function runaway_customizer( $wp_customize ){
     $wp_customize->add_section( 'custom_hero_card_image', array(
         'title' => __('Change home page hero card image', 'runawaytheme'),
         'panel' => 'home_page',
-        'priority' => 10
+        'priority' => 40
     ) );
 
     $wp_customize->add_setting( 'hero_card_image', array(
@@ -205,7 +205,7 @@ function runaway_customizer( $wp_customize ){
     $wp_customize->add_section( 'hero_card_background_colour', array(
         'title' => __('Change hero card background colour', 'runawaytheme'),
         'panel' => 'home_page',
-        'priority' => 70
+        'priority' => 50
     ) );
 
     $wp_customize->add_setting('hero_card_background_colour_setting', array(
@@ -230,7 +230,7 @@ function runaway_customizer( $wp_customize ){
     $wp_customize->add_section( 'hero_card_text_colour', array(
         'title' => __('Change hero card text colour', 'runawaytheme'),
         'panel' => 'home_page',
-        'priority' => 80
+        'priority' => 60
     ) );
 
     $wp_customize->add_setting('hero_card_text_colour_setting', array(
@@ -280,7 +280,7 @@ function runaway_customizer( $wp_customize ){
     $wp_customize->add_section( 'custom_about_text', array(
         'title' => __('Change home page about text', 'runawaytheme'),
         'panel' => 'home_page',
-        'priority' => 60
+        'priority' => 70
     ) );
 
     $wp_customize->add_setting( 'about_text_block', array(
@@ -305,7 +305,7 @@ function runaway_customizer( $wp_customize ){
     $wp_customize->add_section( 'custom_about_heading', array(
         'title' => __('Change home page about heading', 'runawaytheme'),
         'panel' => 'home_page',
-        'priority' => 30
+        'priority' => 80
     ) );
 
     $wp_customize->add_setting( 'about_heading', array(
@@ -330,7 +330,7 @@ function runaway_customizer( $wp_customize ){
     $wp_customize->add_section( 'custom_about_image', array(
         'title' => __('Change home page about image', 'runawaytheme'),
         'panel' => 'home_page',
-        'priority' => 40
+        'priority' => 90
     ) );
 
     $wp_customize->add_setting( 'about_image', array(
@@ -354,11 +354,11 @@ function runaway_customizer( $wp_customize ){
     $wp_customize->add_section( 'about_background_colour', array(
         'title' => __('Change about section background colour', 'runawaytheme'),
         'panel' => 'home_page',
-        'priority' => 80
+        'priority' => 110
     ) );
 
     $wp_customize->add_setting('about_background_colour_setting', array(
-        'default' => '#000000',
+        'default' => '#ffffff',
         'transport' => 'refresh'
     ));
 
@@ -399,6 +399,10 @@ function runaway_customizer_styles(){
             color: <?php echo get_theme_mod('hero_card_text_colour_setting', '#ffffff'); ?> !important;
         }
 
+        .menu-item > * {
+            color: <?php echo get_theme_mod('hero_cta_link_colour_setting', '#ffffff'); ?> !important;
+        }
+        
         .about-section {
             background-color: <?php echo get_theme_mod('about_background_colour_setting', '#ffffff'); ?> !important;
         }

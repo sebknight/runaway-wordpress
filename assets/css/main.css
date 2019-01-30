@@ -127,99 +127,51 @@ hr {
   max-height: 300px;
 }
 
+.about-section {
+  overflow: hidden;
+}
+
 .about-image {
   max-height: 500px;
   max-width: auto;
 }
 
 /* Portfolio Page */
-.portfolio-container {
-  height: 100%;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  margin: 0 auto;
-  /* flex-basis: 25%; */
-}
-
-.portfolio-post {
-  min-width: 100%;
-  margin: 1em;
-}
-
-@media (min-width: 600px) {
-  .portfolio-post {
-    min-width: 80%;
-  }
+.portfolio-container, .services-container {
+  display: -ms-inline-grid;
+  display: inline-grid;
+  -ms-grid-columns: auto;
+      grid-template-columns: auto;
+  width: 100%;
 }
 
 @media (min-width: 900px) {
-  .portfolio-post {
-    min-width: 50%;
-    margin: 0 auto;
+  .portfolio-container, .services-container {
+    -ms-grid-columns: auto auto;
+        grid-template-columns: auto auto;
   }
 }
 
 @media (min-width: 1200px) {
-  .portfolio-post {
-    min-width: 33%;
+  .portfolio-container, .services-container {
+    -ms-grid-columns: auto auto auto;
+        grid-template-columns: auto auto auto;
   }
+}
+
+.portfolio-post {
+  min-width: 80%;
+  margin: 1em;
 }
 
 /* Services Page */
-.column-services {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: start;
-      -ms-flex-align: start;
-          align-items: flex-start;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
-  margin: 1em;
-  padding: 0;
-  min-width: 30%;
-}
-
-@media (min-width: 900px) {
-  .column-services {
-    min-width: 50%;
-  }
-}
-
 .card-services {
+  margin: 1em;
   color: inherit;
   background: inherit;
   border: 1px solid black;
   padding: 1em;
   margin: 1em;
-}
-
-@media (min-width: 600px) {
-  .card-services {
-    padding: 1.5em;
-    margin: 1.5em;
-  }
-}
-
-@media (min-width: 900px) {
-  .card-services {
-    padding: 2em;
-    margin: 2em;
-  }
-}
-
-@media (min-width: 1200px) {
-  .card-services {
-    padding: 3em;
-    margin: 3em;
-  }
 }
 
 /* Clients Page */
@@ -246,6 +198,13 @@ hr {
   display: flex;
   -ms-flex-wrap: wrap-reverse;
       flex-wrap: wrap-reverse;
+}
+
+/* Contact Page */
+label, input {
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  font-family: 'Varela', 'Helvetica', sans-serif;
 }
 
 /* 404 Page */

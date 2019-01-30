@@ -134,6 +134,10 @@ hr {
     max-height: 300px;
 }
 
+.about-section {
+    overflow: hidden;
+}
+
 .about-image {
     max-height: 500px;
     max-width: auto;
@@ -141,63 +145,53 @@ hr {
 
 /* Portfolio Page */
 
-.portfolio-container {
-    height: 100%;
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: row;
-    margin: 0 auto;
-    /* flex-basis: 25%; */
+// .portfolio-container {
+//     height: 100%;
+//     display: flex;
+//     flex-wrap: wrap;
+//     flex-direction: row;
+//     margin: 0 auto;
+//     /* flex-basis: 25%; */
+// }
+
+.portfolio-container, .services-container {
+    display: inline-grid;
+    grid-template-columns: auto;
+    width: 100%;
+    @include bp(tablet-landscape){
+        grid-template-columns: auto auto;
+    }
+    @include bp(desktop){
+        grid-template-columns: auto auto auto;
+    }
 }
 
 .portfolio-post {
-    min-width: 100%;
+    min-width: 80%;
     margin: 1em;
-    @include bp(tablet-portrait){
-        min-width: 80%;
-    }
-    @include bp(tablet-landscape){
-        min-width: 50%;
-        margin: 0 auto;
-    }
-    @include bp(desktop){
-        min-width: 33%;
-    }
 }
 
 /* Services Page */
 
-.column-services {
-    display: flex;
-    align-items: flex-start;
-    flex-wrap: wrap;
-    margin: 1em;
-    padding: 0;
-    min-width: 30%;
-    @include bp(tablet-landscape){
-        min-width: 50%;
-    }
-
-}
-
 .card-services {
+    margin: 1em;
     color: inherit;
     background: inherit;
     border: 1px solid black;
     padding: 1em;
     margin: 1em;
-    @include bp(tablet-portrait){
-        padding: 1.5em;
-        margin: 1.5em;
-    }
-    @include bp(tablet-landscape){
-        padding: 2em;
-        margin: 2em;
-    }
-    @include bp(desktop){
-        padding: 3em;
-        margin: 3em;
-    }
+    // @include bp(tablet-portrait){
+    //     padding: 1.5em;
+    //     margin: 1.5em;
+    // }
+    // @include bp(tablet-landscape){
+    //     padding: 2em;
+    //     margin: 2em;
+    // }
+    // @include bp(desktop){
+    //     padding: 3em;
+    //     margin: 3em;
+    // }
 }
 
 /* Clients Page */
@@ -213,16 +207,19 @@ hr {
     }
 }
 
-.client-logo {
-    // max-width: 50%;
-}
-
 .client-level{
     display: flex;
     flex-wrap: wrap-reverse;
     // @include bp(tablet-portrait){
     //     display: '';
     // }
+}
+
+/* Contact Page */
+label, input {
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    font-family: 'Varela', 'Helvetica', sans-serif;
 }
 
 /* 404 Page */
