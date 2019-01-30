@@ -1,12 +1,5 @@
 /* Media Queries */
 /* Utility Mixins */
-/* Body Styles and Font Settings */
-@font-face {
-  font-family: 'Varela', 'Helvetica', sans-serif;
-  src: url("../fonts/Varela-Regular.ttf");
-  font-weight: normal;
-}
-
 html, body, #page {
   margin: 0 auto;
   padding: 0;
@@ -15,71 +8,55 @@ html, body, #page {
   height: 100%;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
-  font-family: 'Varela', 'Helvetica', sans-serif;
-  line-height: 1.25;
+  font-family: 'Montserrat', 'Helvetica', sans-serif;
+  line-height: 1.375;
 }
 
-@media (min-width: 900px) {
-  html, body, #page {
-    font-size: 1em;
-    line-height: 1.375;
-  }
-}
-
+/* Font settings */
 h1, h2, h3, a {
   letter-spacing: 3px;
   text-transform: uppercase;
+  font-family: 'Varela', 'Helvetica', sans-serif;
 }
 
 h1 {
-  font-size: 2em;
+  font-size: 1.75em;
 }
 
 @media (min-width: 900px) {
   h1 {
-    font-size: 2.5em;
+    font-size: 2em;
     line-height: 1.125;
   }
 }
 
 @media (min-width: 1200px) {
   h1 {
-    font-size: 3em;
+    font-size: 2.25em;
     line-height: 1.05;
   }
 }
 
 h2 {
-  font-size: 1.625em;
+  font-size: 1.25em;
   line-height: 1.15384615;
 }
 
 @media (min-width: 900px) {
   h2 {
-    font-size: 2em;
+    font-size: 1.5em;
     line-height: 1.25;
   }
 }
 
 @media (min-width: 1200px) {
   h2 {
-    font-size: 2.25em;
+    font-size: 1.75em;
     line-height: 1.25;
   }
 }
 
-#page {
-  font-size: 1em;
-  line-height: 1.25;
-}
-
-@media (min-width: 600px) {
-  #page {
-    font-size: 1em;
-    line-height: 1.375;
-  }
-}
-
+/* Item styles */
 .button {
   background: white;
   color: black;
@@ -120,11 +97,30 @@ hr {
 .hero-card {
   z-index: 1;
   text-align: center;
+  border-radius: 5px;
   padding: 1em;
 }
 
+@media (min-width: 600px) {
+  .hero-card {
+    max-width: 60%;
+  }
+}
+
+@media (min-width: 900px) {
+  .hero-card {
+    max-width: 40%;
+  }
+}
+
+@media (min-width: 1200px) {
+  .hero-card {
+    max-width: 30%;
+  }
+}
+
 .hero-card-image {
-  max-height: 300px;
+  max-height: 200px;
 }
 
 .about-section {
@@ -134,6 +130,24 @@ hr {
 .about-image {
   max-height: 500px;
   max-width: auto;
+}
+
+.about-content {
+  width: 80%;
+  padding-left: 1em;
+  padding-right: 1em;
+}
+
+@media (min-width: 900px) {
+  .about-content {
+    width: 60%;
+  }
+}
+
+@media (min-width: 1200px) {
+  .about-content {
+    width: 50%;
+  }
 }
 
 /* Portfolio Page */
@@ -210,29 +224,58 @@ hr {
 }
 
 /* Clients Page */
-.client-post {
-  max-width: 50%;
-  padding: 0;
-}
-
-@media (min-width: 900px) {
-  .client-post {
-    max-width: 60%;
-  }
-}
-
-@media (min-width: 1200px) {
-  .client-post {
-    max-width: 50%;
-  }
-}
-
 .client-level {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -ms-flex-wrap: wrap-reverse;
       flex-wrap: wrap-reverse;
+}
+
+.client-post {
+  width: 100%;
+  padding: 0;
+}
+
+@media (min-width: 600px) {
+  .client-post {
+    width: 70%;
+  }
+}
+
+@media (min-width: 900px) {
+  .client-post {
+    width: 60%;
+  }
+}
+
+@media (min-width: 1200px) {
+  .client-post {
+    width: 50%;
+  }
+}
+
+.client-logo {
+  width: 100%;
+  padding-left: 3em;
+}
+
+@media (min-width: 600px) {
+  .client-logo {
+    width: 30%;
+  }
+}
+
+@media (min-width: 900px) {
+  .client-logo {
+    width: 40%;
+  }
+}
+
+@media (min-width: 1200px) {
+  .client-logo {
+    width: 50%;
+  }
 }
 
 /* Contact Page */

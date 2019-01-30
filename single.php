@@ -14,7 +14,7 @@
     <?php the_title();
         the_category();
  
-         endwhile;
+        endwhile;
             endif;
 
             ?>

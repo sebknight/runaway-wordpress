@@ -105,8 +105,6 @@ function runaway_enquiries_post_type(){
     register_post_type('enquiries', $args);
 }
 add_action('init', 'runaway_enquiries_post_type');
-
-
 ?>
 
 

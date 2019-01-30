@@ -16,8 +16,9 @@ get_header('front'); ?>
         <?php endif; ?>
 
         <?php if( get_theme_mod( 'hero_text_block' ) !="") : ?>
-          <div class="card-content">
-            <h1><?php echo get_theme_mod( 'hero_text_block' ); ?></h1>
+          <div class="hero-card-content">
+            <h3><?php echo get_theme_mod( 'hero_text_block' ); ?></h3>
+            <br>
             <?php wp_nav_menu( array('theme_location' => 'hero') ); ?>
           </div>
         <?php endif; ?>
@@ -45,12 +46,11 @@ get_header('front'); ?>
 
         <?php if( get_theme_mod( 'about_text_block' ) !="") : ?>
           <div class="level">
-            <div class="level-item content">
+            <div class="level-item about-content">
               <?php echo get_theme_mod( 'about_text_block' ); ?>
             </div>
           </div>
         <?php endif; ?>
-    </div>
 </section>
 
 <?php get_footer('front'); ?>

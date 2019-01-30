@@ -22,72 +22,50 @@
     padding: 0;
 }
 
-/* Body Styles and Font Settings */
-
-@font-face {
-    font-family: 'Varela', 'Helvetica', sans-serif;  
-    src: url('../fonts/Varela-Regular.ttf');  
-    font-weight: normal;  
-}
-
-
 html, body, #page {
     @include zero-margin;
     position: 0;
     width: 100%;
     height: 100%;
     box-sizing: border-box;
-    font-family: 'Varela', 'Helvetica', sans-serif;
-    line-height: 1.25;
-        @include bp(tablet-landscape){
-        font-size: 1em;
-        line-height: 1.375;
-    }
+    font-family: 'Montserrat', 'Helvetica', sans-serif;
+    line-height: 1.375;
 }
+
+/* Font settings */
 
 h1, h2, h3, a {
     letter-spacing: 3px;
     text-transform: uppercase;
+    font-family: 'Varela', 'Helvetica', sans-serif;
 }
 
-// body, h1, h2, h3, h4, h5, h6 {
-//     font-size-adjust: 0.5;
-// }
-
 h1 {
-    font-size: 2em;
+    font-size: 1.75em;
     @include bp(tablet-landscape){
-        font-size: 2.5em;
+        font-size: 2em;
         line-height: 1.125;
     }
     @include bp(desktop){
-        font-size: 3em;
+        font-size: 2.25em;
         line-height: 1.05;
     }
 }
 
 h2 {
-    font-size: 1.625em;
+    font-size: 1.25em;
     line-height: 1.15384615;
     @include bp(tablet-landscape){
-        font-size: 2em;
+        font-size: 1.5em;
         line-height: 1.25;
     }
     @include bp(desktop){
-        font-size: 2.25em;
+        font-size: 1.75em;
         line-height: 1.25;
     }
 }
 
-
-#page {
-    font-size: 1em;
-    line-height: 1.25;
-    @include bp(tablet-portrait){
-        font-size: 1em;
-        line-height: 1.375;
-    }
-}
+/* Item styles */
 
 .button {
     background: white;
@@ -127,11 +105,22 @@ hr {
 .hero-card {
     z-index: 1;
     text-align: center;
+    border-radius: 5px;
     padding: 1em;
+    @include bp(tablet-portrait){
+        max-width: 60%;
+    }
+    @include bp(tablet-landscape){
+        max-width: 40%;
+    }
+    @include bp(desktop){
+        max-width: 30%;
+    }
+
 }
 
 .hero-card-image {
-    max-height: 300px;
+    max-height: 200px;
 }
 
 .about-section {
@@ -143,16 +132,19 @@ hr {
     max-width: auto;
 }
 
-/* Portfolio Page */
+.about-content {
+    width: 80%;
+    padding-left: 1em;
+    padding-right: 1em;
+    @include bp(tablet-landscape){
+        width: 60%;
+    }
+    @include bp(desktop){
+        width: 50%;
+    }
+}
 
-// .portfolio-container {
-//     height: 100%;
-//     display: flex;
-//     flex-wrap: wrap;
-//     flex-direction: row;
-//     margin: 0 auto;
-//     /* flex-basis: 25%; */
-// }
+/* Portfolio Page */
 
 .portfolio-container {
     display: inline-grid;
@@ -205,26 +197,41 @@ hr {
 
 /* Clients Page */
 
+.client-level {
+    display: flex;
+    flex-wrap: wrap-reverse;
+}
+
 .client-post {
-    max-width: 50%;
+    width: 100%;
     padding: 0;
+    @include bp(tablet-portrait){
+        width: 70%;
+}
     @include bp(tablet-landscape){
-        max-width: 60%;
+        width: 60%;
     }
     @include bp(desktop){
-        max-width: 50%;
+        width: 50%;
     }
 }
 
-.client-level{
-    display: flex;
-    flex-wrap: wrap-reverse;
-    // @include bp(tablet-portrait){
-    //     display: '';
-    // }
+.client-logo {
+    width: 100%;
+    padding-left: 3em;
+    @include bp(tablet-portrait){
+        width: 30%;
+    }
+    @include bp(tablet-landscape){
+        width: 40%;
+    }
+    @include bp(desktop){
+        width: 50%;
+    }
 }
 
 /* Contact Page */
+
 label, input {
     letter-spacing: 3px;
     text-transform: uppercase;

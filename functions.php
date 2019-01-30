@@ -7,9 +7,9 @@ function runaway_custom_frontend() {
     wp_enqueue_style('normalize', get_template_directory_uri() . '/assets/css/normalize.css', array(), '8.0.1', 'all');
     wp_enqueue_style('bulma', get_template_directory_uri() . '/assets/css/bulma.min.css', array(), '0.7.2', 'all');
     wp_enqueue_style('main', get_template_directory_uri() . '/assets/css/main.css', array(), '0.0.1', 'all');
+
     # Fonts
-    wp_enqueue_style( 'wpb-google-fonts', 'https://fonts.googleapis.com/css?family=Varela', false ); 
-    wp_enqueue_style( 'local-font', get_template_directory_uri() . '/assets/fonts/Varela-Regular.ttf', false ); 
+    wp_enqueue_style( 'wpb-google-fonts', 'https://fonts.googleapis.com/css?family=Varela|Montserrat', false ); 
 
     # JS
     wp_enqueue_script('jquery', get_template_directory_uri() . '/assets/js/jquery-3.3.1.min.js', array(), '3.3.1', true);
@@ -25,7 +25,6 @@ function runaway_theme_setup() {
     add_theme_support('menus');
     register_nav_menu('primary', 'Primary header navigation');
     register_nav_menu('hero', 'CTA buttons for the hero card');
-    // register_nav_menu('hero', 'CTA buttons for the hero card');
 }
 
 add_action('init', 'runaway_theme_setup');
@@ -36,7 +35,7 @@ add_theme_support('custom-background');
 add_theme_support('post-thumbnails');
 
 # Enable post types
-add_theme_support('post-formats', array('aside', 'image', 'video'));
+add_theme_support('post-formats', array('image', 'video'));
 
 # Allow custom logo
 add_theme_support('custom-logo', array(
@@ -64,24 +63,6 @@ $defaultImage = array(
 
 add_theme_support('custom-header', $defaultImage);
 
-# Setting up hero CTA nav
-
-function runaway_sidebar_setup() {
-    register_sidebar(
-        array(
-            'name' => 'Hero CTA navigation',
-            'id' => 'hero-cta',
-            'class' => '',
-            'description' => 'CTA buttons for the hero card',
-            'before_widget' => '<div id="%1$s" class="widget %2$s">',
-            'after_widget' => "</div>\n",
-            'before_title' => '<h2 class="widget-title widget-dropdown-title">',
-            'after_title' => "</h2>\n",
-        )
-    );
-}
-add_action('widgets_init', 'runaway_sidebar_setup');
-
 # Head function 
 
 function runaway_remove_version() {
@@ -98,6 +79,9 @@ require get_parent_theme_file_path('/inc/custom-post-types.php');
 
 require get_parent_theme_file_path('./inc/custom-customizer.php');
 
+require get_parent_theme_file_path('./inc/educational_alert.php');
+
 
 #  Remove rich editing in the contact form
+
 add_filter( 'user_can_richedit' , '__return_false', 50 );
